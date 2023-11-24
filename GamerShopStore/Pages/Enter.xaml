@@ -8,6 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Enter">
 
+    
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
@@ -39,7 +40,7 @@
                     <TextBox></TextBox>
                 </StackPanel>
             </StackPanel>
-            <Button Width="100" Height="30" Click="Button_Click_Enter">Войти</Button>
+            <Button Width="100" Height="30" Click="Button_Click_Enter"  Style="{StaticResource BlackAndWhite}">Войти</Button>
         </StackPanel>
 
 

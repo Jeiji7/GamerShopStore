@@ -24,5 +24,10 @@ namespace GamerShopStore.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_Click_Enter(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -4,6 +4,49 @@
              xmlns:local="clr-namespace:GamerShopStore"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+       
+        <Style x:Key="BlackAndWhite">
+            <!--<Setter Property="Control.Background">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#ffd66c" Offset="0" />
+                            <GradientStop Color="#c836fc" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.Foreground" Value="Black" />
+            <Setter Property="Control.Margin" Value="10" />
+            <Setter Property="Control.BorderThickness" Value="2"/>-->
+          
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <LinearGradientBrush>
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="#ffd66c" Offset="0" />
+                            <GradientStop Color="#c836fc" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" CornerRadius="5"  Padding="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                           
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="SkyBlue" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="SteelBlue" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </LinearGradientBrush>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
+  
 </Application>
