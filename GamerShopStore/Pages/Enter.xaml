@@ -8,12 +8,40 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Enter">
 
-    <Grid>
-        <StackPanel Orientation="Horizontal">
-            <Button>Ghbdtn</Button>
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="280"/>
+        </Grid.RowDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush >
+                <GradientStop Color="#FF004F54" Offset="0"/>
+                <GradientStop Color="#FF008890" Offset="0.717"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+
+        <StackPanel Grid.Row="1"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>Логин</TextBlock>
+                    <TextBox></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>Пароль</TextBlock>
+                    <TextBox></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="100" Height="30" Click="Button_Click_Enter">Войти</Button>
         </StackPanel>
-        <StackPanel Orientation="Vertical">
-            <Button>2183328489</Button>
-        </StackPanel>
+
+
+
+
+
     </Grid>
 </Page>
