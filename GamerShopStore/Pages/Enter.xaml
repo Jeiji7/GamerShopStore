@@ -19,7 +19,7 @@
             <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/ImageResource/FonAutoRis.png"></ImageBrush>
+            <ImageBrush ImageSource="/ImageResource/FonAutoRis2.png"></ImageBrush>
         </Grid.Background>
 
         <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -30,15 +30,15 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>Логин</TextBlock>
-                    <TextBox></TextBox>
+                    <TextBox x:Name="LoginTB"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>Пароль</TextBlock>
-                    <TextBox></TextBox>
+                    <PasswordBox x:Name="PasswordPS"></PasswordBox>
                 </StackPanel>
             </StackPanel>
             <Button  Click="Button_Click_Enter"  Style="{StaticResource BlackAndWhite}">
-                <TextBlock Margin="0 -30">
+                <TextBlock Margin="0 -25">
                     Войти
                 </TextBlock>
             </Button>

@@ -8,15 +8,15 @@
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" CornerRadius="10"  Padding="10" Background="#c836fc">
+                        <Border x:Name="border" CornerRadius="10"  Padding="10" Background="#124a4a">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#ffd66c" />
+                                <Setter TargetName="border" Property="Background" Value="#074747" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#c836fc" />
+                                <Setter TargetName="border" Property="Background" Value="#124a4a" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -28,15 +28,24 @@
 
         
         <Style TargetType="TextBlock">
-            <Setter Property="Control.Foreground" Value="Black"/>
+            <Setter Property="Control.Foreground" Value="#535e5e"/>
             <Setter Property="Control.BorderThickness" Value="2"/>
             <Setter Property="Control.FontSize" Value="40"/>
+            <Setter Property="Control.FontFamily" Value="Impact"/>
         </Style>
 
         <Style TargetType="TextBox">
             <Setter Property="Control.Width" Value="160"></Setter>
             <Setter Property="Control.Height" Value="40"></Setter>
-            <Setter Property="Control.FontFamily" Value="Italic"/>
+            <Setter Property="Control.FontFamily" Value="Impact"/>
+            <Setter Property="Control.FontSize" Value="30"/>
+        </Style>
+
+        <Style TargetType="PasswordBox">
+            <Setter Property="Control.Width" Value="160"></Setter>
+            <Setter Property="Control.Height" Value="40"></Setter>
+            <Setter Property="Control.FontFamily" Value="Impact"/>
+            <Setter Property="Control.FontSize" Value="30"/>
         </Style>
 
         <!--<Setter Property="Control.FontFamily" Value="Verdana" />
