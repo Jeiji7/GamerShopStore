@@ -4,49 +4,78 @@
              xmlns:local="clr-namespace:GamerShopStore"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-       
-        <Style x:Key="BlackAndWhite">
-            <!--<Setter Property="Control.Background">
-                <Setter.Value>
-                    <LinearGradientBrush>
-                        <LinearGradientBrush.GradientStops>
-                            <GradientStop Color="#ffd66c" Offset="0" />
-                            <GradientStop Color="#c836fc" Offset="1" />
-                        </LinearGradientBrush.GradientStops>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Control.FontFamily" Value="Verdana" />
-            <Setter Property="Control.Foreground" Value="Black" />
-            <Setter Property="Control.Margin" Value="10" />
-            <Setter Property="Control.BorderThickness" Value="2"/>-->
-          
+        <Style x:Key="BlackAndWhite" TargetType="Button">
             <Setter Property="Control.Template">
                 <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="10"  Padding="10" Background="#c836fc">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#ffd66c" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#c836fc" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsControl.Width" Value="180"/>
+            <Setter Property="ItemsControl.Height" Value="65"/>
+        </Style>
+
+        
+        <Style TargetType="TextBlock">
+            <Setter Property="Control.Foreground" Value="Black"/>
+            <Setter Property="Control.BorderThickness" Value="2"/>
+            <Setter Property="Control.FontSize" Value="40"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Control.Width" Value="160"></Setter>
+            <Setter Property="Control.Height" Value="40"></Setter>
+            <Setter Property="Control.FontFamily" Value="Italic"/>
+        </Style>
+
+        <!--<Setter Property="Control.FontFamily" Value="Verdana" />
+        <Setter Property="Control.Foreground" Value="Black" />
+        <Setter Property="Control.Margin" Value="10" />
+        <Setter Property="Control.BorderThickness" Value="2"/>
+
+        <Setter Property="Control.Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" CornerRadius="5"  Padding="5" Background="#c836fc">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#ffd66c" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#c836fc" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Control.Width" Value="200" />-->
+        <!--<Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
                     <LinearGradientBrush>
                         <LinearGradientBrush.GradientStops>
                             <GradientStop Color="#ffd66c" Offset="0" />
                             <GradientStop Color="#c836fc" Offset="1" />
                         </LinearGradientBrush.GradientStops>
-                        <ControlTemplate TargetType="Button">
-                            <Border x:Name="border" CornerRadius="5"  Padding="5">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                           
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="SkyBlue" />
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="SteelBlue" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
                     </LinearGradientBrush>
-
-                </Setter.Value>
-            </Setter>
-        </Style>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>-->
     </Application.Resources>
   
 </Application>
