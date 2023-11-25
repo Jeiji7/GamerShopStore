@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace GamerShopStore.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Enter.xaml
+    /// Логика взаимодействия для Supervisor.xaml
     /// </summary>
-    public partial class Enter : Page
+    public partial class Supervisor : Page
     {
-        public Enter()
+        public Supervisor()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click_Enter(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Supervisor());
         }
     }
 }

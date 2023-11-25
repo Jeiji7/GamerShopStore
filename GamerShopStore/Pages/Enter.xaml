@@ -15,8 +15,8 @@
             <ColumnDefinition Width="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="320"/>
         </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/FonAutoRis2.png"></ImageBrush>
@@ -38,7 +38,7 @@
                 </StackPanel>
             </StackPanel>
             <Button  Click="Button_Click_Enter"  Style="{StaticResource BlackAndWhite}">
-                <TextBlock Margin="0 -25">
+                <TextBlock Margin="0 -25" >
                     Войти
                 </TextBlock>
             </Button>

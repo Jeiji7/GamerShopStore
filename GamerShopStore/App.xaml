@@ -28,7 +28,7 @@
 
         
         <Style TargetType="TextBlock">
-            <Setter Property="Control.Foreground" Value="#535e5e"/>
+            <Setter Property="Control.Foreground" Value="Bisque"/>
             <Setter Property="Control.BorderThickness" Value="2"/>
             <Setter Property="Control.FontSize" Value="40"/>
             <Setter Property="Control.FontFamily" Value="Impact"/>
@@ -48,43 +48,28 @@
             <Setter Property="Control.FontSize" Value="30"/>
         </Style>
 
-        <!--<Setter Property="Control.FontFamily" Value="Verdana" />
-        <Setter Property="Control.Foreground" Value="Black" />
-        <Setter Property="Control.Margin" Value="10" />
-        <Setter Property="Control.BorderThickness" Value="2"/>
+        <Style x:Key="WidthButton" TargetType="Button">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" CornerRadius="10"  Padding="10" Background="#a6a868">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#aaab85" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#a6a868" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsControl.Width" Value="320"/>
+            <Setter Property="ItemsControl.Height" Value="65"/>
+        </Style>
 
-        <Setter Property="Control.Template">
-            <Setter.Value>
-
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="border" CornerRadius="5"  Padding="5" Background="#c836fc">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#ffd66c" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="#c836fc" />
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Control.Width" Value="200" />-->
-        <!--<Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <LinearGradientBrush>
-                        <LinearGradientBrush.GradientStops>
-                            <GradientStop Color="#ffd66c" Offset="0" />
-                            <GradientStop Color="#c836fc" Offset="1" />
-                        </LinearGradientBrush.GradientStops>
-                    </LinearGradientBrush>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>-->
     </Application.Resources>
   
 </Application>

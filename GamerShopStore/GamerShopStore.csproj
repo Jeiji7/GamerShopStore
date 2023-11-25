@@ -71,10 +71,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Supervisor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\Enter.xaml.cs">
       <DependentUpon>Enter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Supervisor.xaml.cs">
+      <DependentUpon>Supervisor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -102,10 +109,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ImageResource\FonAutoRis.png" />
+    <Resource Include="ImageResource\FonAutoRis2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ImageResource\FonAutoRis2.png" />
+    <Resource Include="ImageResource\supervisor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\superprovisor2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\supervisor3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\supervisor4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
