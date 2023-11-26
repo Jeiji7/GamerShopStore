@@ -7,8 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Enter">
-
-
+   
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400"/>
@@ -30,11 +29,11 @@
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>Логин</TextBlock>
-                    <TextBox x:Name="LoginTB"></TextBox>
+                    <TextBox  x:Name="LoginTB" Background="White" Padding="5" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>Пароль</TextBlock>
-                    <PasswordBox x:Name="PasswordPS"></PasswordBox>
+                        <PasswordBox x:Name="PasswordPS" Padding="5"></PasswordBox>
                 </StackPanel>
             </StackPanel>
             <Button  Click="Button_Click_Enter"  Style="{StaticResource BlackAndWhite}">

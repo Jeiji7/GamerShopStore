@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Supervisor">
 
-    <Grid Background="#527501">
+    <Grid><!--Background="#5b3b2f"-->
         <Grid.RowDefinitions>
             <RowDefinition Height="120*"/>
             <RowDefinition Height="110"/>
@@ -19,9 +19,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <!--<Grid.Background>
-            <ImageBrush ImageSource="/ImageResource/supervisor4.png"/>
-        </Grid.Background>-->
+        <Grid.Background>
+            <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
+        </Grid.Background>
         <TextBlock Grid.RowSpan="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Bisque">Опции руководителя: </TextBlock>
         <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Магазин</Button>
         <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Склад</Button>

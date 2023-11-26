@@ -38,14 +38,35 @@
             <Setter Property="Control.Width" Value="160"></Setter>
             <Setter Property="Control.Height" Value="40"></Setter>
             <Setter Property="Control.FontFamily" Value="Impact"/>
-            <Setter Property="Control.FontSize" Value="30"/>
+            <Setter Property="Control.FontSize" Value="25"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" CornerRadius="10"  Background="White">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
         </Style>
 
-        <Style TargetType="PasswordBox">
+        <Style TargetType="PasswordBox" >
             <Setter Property="Control.Width" Value="160"></Setter>
             <Setter Property="Control.Height" Value="40"></Setter>
             <Setter Property="Control.FontFamily" Value="Impact"/>
-            <Setter Property="Control.FontSize" Value="30"/>
+            <Setter Property="Control.FontSize" Value="25"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="border" CornerRadius="10" Background="White">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="WidthButton" TargetType="Button">
@@ -70,6 +91,20 @@
             <Setter Property="ItemsControl.Height" Value="65"/>
         </Style>
 
+        <Style TargetType="ListView">
+            <Setter Property="Background" Value="Beige"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        
     </Application.Resources>
   
 </Application>

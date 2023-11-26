@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f1bd76c6d3c47f1a5294e489b0e20fe" Name="Diagram1">
+        <EntityTypeShape EntityType="GameStoreModel.Employee" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.PostEmp" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Supplier" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Tovar" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Tovar_Sup" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Type_Tovar" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="GameStoreModel.FK_Employee_PostEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="GameStoreModel.FK_Tovar_Sup_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="GameStoreModel.FK_Tovar_Type_Tovar" ManuallyRouted="false" />
+        <AssociationConnector Association="GameStoreModel.FK_Tovar_Sup_Type_Tovar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
