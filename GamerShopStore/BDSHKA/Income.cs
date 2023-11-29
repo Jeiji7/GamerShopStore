@@ -12,17 +12,13 @@ namespace GamerShopStore.BDSHKA
     using System;
     using System.Collections.Generic;
     
-    public partial class Tovar
+    public partial class Income
     {
-        public int ID_tovar { get; set; }
-        public string NameTovar { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Counts { get; set; }
-        public Nullable<int> ID_type { get; set; }
-        public byte[] ImageTovar { get; set; }
-        public Nullable<bool> VisibleTov { get; set; }
+        public int ID_income { get; set; }
+        public string Date { get; set; }
+        public Nullable<decimal> Income1 { get; set; }
+        public Nullable<int> ID_quarter { get; set; }
     
-        public virtual Type_Tovar Type_Tovar { get; set; }
+        public virtual Quarter Quarter { get; set; }
     }
 }

@@ -15,16 +15,62 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280*"/>
-            <ColumnDefinition Width="520*"/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="540*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
-        <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center">Список сотрудников:</TextBlock>
-        <ListView x:Name="EmployeeList" Grid.Column="1" Grid.RowSpan="2">
-            <ListViewItem></ListViewItem>
+        <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="10">Список сотрудников:</TextBlock>
+        <ListView x:Name="EmployeeList" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="EmployeeList_SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Имя" Width="104">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Style="{StaticResource TextListview}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Телефон" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Text="{Binding Path=Phone}" Style="{StaticResource TextListview}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Должность" Width="155">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Text="{Binding Path=PostEmp.NamePost}" Style="{StaticResource TextListview}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Зарплата" Width="130">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Salary}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
         </ListView>
-        
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click" >
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" FontSize="15">
+                Удалить сотрудника
+                </TextBlock>
+            </Button>
+            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_ADD" >
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" FontSize="15">
+                Добавить сотрудника
+                </TextBlock>
+            </Button>
+        </StackPanel>
+       
     </Grid>
 </Page>

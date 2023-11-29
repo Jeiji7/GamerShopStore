@@ -20,8 +20,8 @@ namespace GamerShopStore.BDSHKA
         public Nullable<int> Counts { get; set; }
         public Nullable<int> ID_type { get; set; }
         public Nullable<int> ID_sup { get; set; }
-        public Nullable<bool> Visiable { get; set; }
         public byte[] ImageTovar { get; set; }
+        public Nullable<bool> VisibleSup { get; set; }
     
         public virtual Supplier Supplier { get; set; }
         public virtual Type_Tovar Type_Tovar { get; set; }

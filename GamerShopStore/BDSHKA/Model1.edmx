@@ -16,6 +16,17 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_post" Type="int" />
           <Property Name="Salary" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="Visible" Type="bit" />
+          <Property Name="PhotoEmployee" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="ID_income" />
+          </Key>
+          <Property Name="ID_income" Type="int" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
+          <Property Name="Income" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ID_quarter" Type="int" />
         </EntityType>
         <EntityType Name="PostEmp">
           <Key>
@@ -23,6 +34,13 @@
           </Key>
           <Property Name="ID_post" Type="int" Nullable="false" />
           <Property Name="NamePost" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="ID_quarter" />
+          </Key>
+          <Property Name="ID_quarter" Type="int" Nullable="false" />
+          <Property Name="NameQuarter" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -52,7 +70,7 @@
           <Property Name="Counts" Type="int" />
           <Property Name="ID_type" Type="int" />
           <Property Name="ImageTovar" Type="varbinary(max)" />
-          <Property Name="Visiable" Type="bit" />
+          <Property Name="VisibleTov" Type="bit" />
         </EntityType>
         <EntityType Name="Tovar_Sup">
           <Key>
@@ -65,7 +83,7 @@
           <Property Name="ID_type" Type="int" />
           <Property Name="ID_sup" Type="int" />
           <Property Name="ImageTovar" Type="varbinary(max)" />
-          <Property Name="Visiable" Type="bit" />
+          <Property Name="VisibleSup" Type="bit" />
         </EntityType>
         <EntityType Name="Type_Tovar">
           <Key>
@@ -75,7 +93,9 @@
           <Property Name="Name_type" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Employee_PostEmp">
-          <End Role="PostEmp" Type="Self.PostEmp" Multiplicity="0..1" />
+          <End Role="PostEmp" Type="Self.PostEmp" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PostEmp">
@@ -83,6 +103,18 @@
             </Principal>
             <Dependent Role="Employee">
               <PropertyRef Name="ID_post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Income_Quarter">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="0..1" />
+          <End Role="Income" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="ID_quarter" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="ID_quarter" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -124,7 +156,9 @@
         </Association>
         <EntityContainer Name="Хранилище GameStoreModelContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quarter" EntityType="Self.Quarter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
@@ -133,6 +167,10 @@
           <AssociationSet Name="FK_Employee_PostEmp" Association="Self.FK_Employee_PostEmp">
             <End Role="PostEmp" EntitySet="PostEmp" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Income_Quarter" Association="Self.FK_Income_Quarter">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Income" EntitySet="Income" />
           </AssociationSet>
           <AssociationSet Name="FK_Tovar_Sup_Supplier" Association="Self.FK_Tovar_Sup_Supplier">
             <End Role="Supplier" EntitySet="Supplier" />
@@ -162,7 +200,9 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_post" Type="Int32" />
           <Property Name="Salary" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="Visible" Type="Boolean" />
           <NavigationProperty Name="PostEmp" Relationship="Self.FK_Employee_PostEmp" FromRole="Employee" ToRole="PostEmp" />
+          <Property Name="PhotoEmployee" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="PostEmp">
           <Key>
@@ -200,9 +240,9 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Counts" Type="Int32" />
           <Property Name="ID_type" Type="Int32" />
-          <Property Name="Visiable" Type="Boolean" />
-          <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Type_Tovar" FromRole="Tovar" ToRole="Type_Tovar" />
           <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VisibleTov" Type="Boolean" />
+          <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Type_Tovar" FromRole="Tovar" ToRole="Type_Tovar" />
         </EntityType>
         <EntityType Name="Tovar_Sup">
           <Key>
@@ -214,10 +254,10 @@
           <Property Name="Counts" Type="Int32" />
           <Property Name="ID_type" Type="Int32" />
           <Property Name="ID_sup" Type="Int32" />
-          <Property Name="Visiable" Type="Boolean" />
+          <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="VisibleSup" Type="Boolean" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Tovar_Sup_Supplier" FromRole="Tovar_Sup" ToRole="Supplier" />
           <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Sup_Type_Tovar" FromRole="Tovar_Sup" ToRole="Type_Tovar" />
-          <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Type_Tovar">
           <Key>
@@ -229,7 +269,9 @@
           <NavigationProperty Name="Tovar_Sup" Relationship="Self.FK_Tovar_Sup_Type_Tovar" FromRole="Type_Tovar" ToRole="Tovar_Sup" />
         </EntityType>
         <Association Name="FK_Employee_PostEmp">
-          <End Role="PostEmp" Type="Self.PostEmp" Multiplicity="0..1" />
+          <End Role="PostEmp" Type="Self.PostEmp" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PostEmp">
@@ -300,7 +342,43 @@
             <End Role="Type_Tovar" EntitySet="Type_Tovar" />
             <End Role="Tovar_Sup" EntitySet="Tovar_Sup" />
           </AssociationSet>
+          <EntitySet Name="Income" EntityType="GameStoreModel.Income" />
+          <EntitySet Name="Quarter" EntityType="GameStoreModel.Quarter" />
+          <AssociationSet Name="FK_Income_Quarter" Association="GameStoreModel.FK_Income_Quarter">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Income" EntitySet="Income" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="ID_income" />
+          </Key>
+          <Property Name="ID_income" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Income1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_quarter" Type="Int32" />
+          <NavigationProperty Name="Quarter" Relationship="GameStoreModel.FK_Income_Quarter" FromRole="Income" ToRole="Quarter" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="ID_quarter" />
+          </Key>
+          <Property Name="ID_quarter" Type="Int32" Nullable="false" />
+          <Property Name="NameQuarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Income" Relationship="GameStoreModel.FK_Income_Quarter" FromRole="Quarter" ToRole="Income" />
+        </EntityType>
+        <Association Name="FK_Income_Quarter">
+          <End Type="GameStoreModel.Quarter" Role="Quarter" Multiplicity="0..1" />
+          <End Type="GameStoreModel.Income" Role="Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="ID_quarter" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="ID_quarter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -310,6 +388,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="GameStoreModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PhotoEmployee" ColumnName="PhotoEmployee" />
                 <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -317,6 +396,7 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="ID_post" ColumnName="ID_post" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -350,28 +430,28 @@
           <EntitySetMapping Name="Tovar">
             <EntityTypeMapping TypeName="GameStoreModel.Tovar">
               <MappingFragment StoreEntitySet="Tovar">
-                <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
                 <ScalarProperty Name="ID_tovar" ColumnName="ID_tovar" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
-                <ScalarProperty Name="Visiable" ColumnName="Visiable" />
+                <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
+                <ScalarProperty Name="VisibleTov" ColumnName="VisibleTov" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tovar_Sup">
             <EntityTypeMapping TypeName="GameStoreModel.Tovar_Sup">
               <MappingFragment StoreEntitySet="Tovar_Sup">
-                <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
                 <ScalarProperty Name="ID_tovarSup" ColumnName="ID_tovarSup" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
                 <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
-                <ScalarProperty Name="Visiable" ColumnName="Visiable" />
+                <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
+                <ScalarProperty Name="VisibleSup" ColumnName="VisibleSup" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -380,6 +460,24 @@
               <MappingFragment StoreEntitySet="Type_Tovar">
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
                 <ScalarProperty Name="Name_type" ColumnName="Name_type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Income">
+            <EntityTypeMapping TypeName="GameStoreModel.Income">
+              <MappingFragment StoreEntitySet="Income">
+                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
+                <ScalarProperty Name="Income1" ColumnName="Income" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID_income" ColumnName="ID_income" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quarter">
+            <EntityTypeMapping TypeName="GameStoreModel.Quarter">
+              <MappingFragment StoreEntitySet="Quarter">
+                <ScalarProperty Name="NameQuarter" ColumnName="NameQuarter" />
+                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

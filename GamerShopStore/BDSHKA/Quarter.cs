@@ -12,17 +12,18 @@ namespace GamerShopStore.BDSHKA
     using System;
     using System.Collections.Generic;
     
-    public partial class Tovar
+    public partial class Quarter
     {
-        public int ID_tovar { get; set; }
-        public string NameTovar { get; set; }
-        public Nullable<decimal> Price { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Counts { get; set; }
-        public Nullable<int> ID_type { get; set; }
-        public byte[] ImageTovar { get; set; }
-        public Nullable<bool> VisibleTov { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Quarter()
+        {
+            this.Income = new HashSet<Income>();
+        }
     
-        public virtual Type_Tovar Type_Tovar { get; set; }
+        public int ID_quarter { get; set; }
+        public string NameQuarter { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Income> Income { get; set; }
     }
 }

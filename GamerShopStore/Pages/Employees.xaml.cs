@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GamerShopStore.BDSHKA;
+using Microsoft.Win32;
 
 namespace GamerShopStore.Pages
 {
@@ -20,9 +22,32 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class Employees : Page
     {
+        public static Employee employee;
+        public int DeleteEmployee { get; set; }
         public Employees()
         {
             InitializeComponent();
+            EmployeeList.ItemsSource = App.BD.Employee.Where(x => x.Visible == true).ToList();
+
+        }
+
+        private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            employee = (Employee)EmployeeList.SelectedItem;
+            DeleteEmployee = employee.ID_employee;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeList.SelectedIndex = DeleteEmployee;
+            employee.Visible = false;
+            App.BD.SaveChanges();
+            NavigationService.Navigate(new Employees());
+        }
+
+        private void Button_Click_ADD(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddEmployee());
         }
     }
 }

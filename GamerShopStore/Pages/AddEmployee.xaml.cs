@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace GamerShopStore.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Supervisor.xaml
+    /// Логика взаимодействия для AddEmployee.xaml
     /// </summary>
-    public partial class Supervisor : Page
+    public partial class AddEmployee : Page
     {
-        public Supervisor()
+        public AddEmployee()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click_Employees(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Employees());
-        }
-
-        private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -22,22 +22,22 @@
         </Grid.Background>
 
         <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <TextBlock>Авторизация</TextBlock>
+            <TextBlock Style="{DynamicResource paragraph}">Авторизация</TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1"  Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBlock>Логин</TextBlock>
+                    <TextBlock Style="{DynamicResource paragraph}">Логин</TextBlock>
                     <TextBox  x:Name="LoginTB" Background="White" Padding="5" ></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10">
-                    <TextBlock>Пароль</TextBlock>
+                    <TextBlock Style="{DynamicResource paragraph}">Пароль</TextBlock>
                         <PasswordBox x:Name="PasswordPS" Padding="5"></PasswordBox>
                 </StackPanel>
             </StackPanel>
             <Button  Click="Button_Click_Enter"  Style="{StaticResource BlackAndWhite}">
-                <TextBlock Margin="0 -25" >
+                <TextBlock Margin="0 -25" Style="{DynamicResource paragraph}" >
                     Войти
                 </TextBlock>
             </Button>

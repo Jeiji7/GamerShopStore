@@ -21,6 +21,8 @@ namespace GamerShopStore.BDSHKA
         public string Password { get; set; }
         public Nullable<int> ID_post { get; set; }
         public Nullable<decimal> Salary { get; set; }
+        public Nullable<bool> Visible { get; set; }
+        public byte[] PhotoEmployee { get; set; }
     
         public virtual PostEmp PostEmp { get; set; }
     }

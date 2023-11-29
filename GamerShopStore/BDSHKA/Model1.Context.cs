@@ -32,5 +32,7 @@ namespace GamerShopStore.BDSHKA
         public virtual DbSet<Tovar> Tovar { get; set; }
         public virtual DbSet<Tovar_Sup> Tovar_Sup { get; set; }
         public virtual DbSet<Type_Tovar> Type_Tovar { get; set; }
+        public virtual DbSet<Income> Income { get; set; }
+        public virtual DbSet<Quarter> Quarter { get; set; }
     }
 }
