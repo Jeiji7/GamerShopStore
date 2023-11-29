@@ -61,12 +61,12 @@
 
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
             <Button  Style="{DynamicResource CommonButton}" Click="Button_Click" >
-                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" FontSize="15">
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
                 Удалить сотрудника
                 </TextBlock>
             </Button>
             <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_ADD" >
-                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" FontSize="15">
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
                 Добавить сотрудника
                 </TextBlock>
             </Button>
