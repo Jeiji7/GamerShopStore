@@ -135,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\StockTovar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Supervisor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +156,9 @@
     </Compile>
     <Compile Include="Pages\Enter.xaml.cs">
       <DependentUpon>Enter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockTovar.xaml.cs">
+      <DependentUpon>StockTovar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
@@ -214,6 +221,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ImageResource\supervis22.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="BDSHKA\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -224,7 +234,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="ImageResource\supervis22.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

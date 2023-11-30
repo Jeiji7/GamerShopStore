@@ -13,10 +13,10 @@ namespace GamerShopStore.BDSHKA
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GameStoreEntities : DbContext
+    public partial class Game_storeEntities : DbContext
     {
-        public GameStoreEntities()
-            : base("name=GameStoreEntities")
+        public Game_storeEntities()
+            : base("name=Game_storeEntities")
         {
         }
     
@@ -26,13 +26,13 @@ namespace GamerShopStore.BDSHKA
         }
     
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Income> Income { get; set; }
         public virtual DbSet<PostEmp> PostEmp { get; set; }
+        public virtual DbSet<Quarter> Quarter { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tovar> Tovar { get; set; }
         public virtual DbSet<Tovar_Sup> Tovar_Sup { get; set; }
         public virtual DbSet<Type_Tovar> Type_Tovar { get; set; }
-        public virtual DbSet<Income> Income { get; set; }
-        public virtual DbSet<Quarter> Quarter { get; set; }
     }
 }

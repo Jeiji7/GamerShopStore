@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище GameStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище Game_storeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID_employee" />
@@ -154,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище GameStoreModelContainer">
+        <EntityContainer Name="Хранилище Game_storeModelContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" Schema="dbo" store:Type="Tables" />
@@ -185,10 +185,11 @@
             <End Role="Tovar" EntitySet="Tovar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="GameStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Game_storeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID_employee" />
@@ -201,8 +202,18 @@
           <Property Name="ID_post" Type="Int32" />
           <Property Name="Salary" Type="Decimal" Precision="8" Scale="3" />
           <Property Name="Visible" Type="Boolean" />
-          <NavigationProperty Name="PostEmp" Relationship="Self.FK_Employee_PostEmp" FromRole="Employee" ToRole="PostEmp" />
           <Property Name="PhotoEmployee" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="PostEmp" Relationship="Self.FK_Employee_PostEmp" FromRole="Employee" ToRole="PostEmp" />
+        </EntityType>
+        <EntityType Name="Income">
+          <Key>
+            <PropertyRef Name="ID_income" />
+          </Key>
+          <Property Name="ID_income" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Income1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_quarter" Type="Int32" />
+          <NavigationProperty Name="Quarter" Relationship="Self.FK_Income_Quarter" FromRole="Income" ToRole="Quarter" />
         </EntityType>
         <EntityType Name="PostEmp">
           <Key>
@@ -211,6 +222,14 @@
           <Property Name="ID_post" Type="Int32" Nullable="false" />
           <Property Name="NamePost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_PostEmp" FromRole="PostEmp" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="ID_quarter" />
+          </Key>
+          <Property Name="ID_quarter" Type="Int32" Nullable="false" />
+          <Property Name="NameQuarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Income" Relationship="Self.FK_Income_Quarter" FromRole="Quarter" ToRole="Income" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -282,6 +301,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Income_Quarter">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="0..1" />
+          <End Role="Income" Type="Self.Income" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="ID_quarter" />
+            </Principal>
+            <Dependent Role="Income">
+              <PropertyRef Name="ID_quarter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Tovar_Sup_Supplier">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="Tovar_Sup" Type="Self.Tovar_Sup" Multiplicity="*" />
@@ -318,9 +349,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GameStoreEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Game_storeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Income" EntityType="Self.Income" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" />
+          <EntitySet Name="Quarter" EntityType="Self.Quarter" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tovar" EntityType="Self.Tovar" />
@@ -329,6 +362,10 @@
           <AssociationSet Name="FK_Employee_PostEmp" Association="Self.FK_Employee_PostEmp">
             <End Role="PostEmp" EntitySet="PostEmp" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Income_Quarter" Association="Self.FK_Income_Quarter">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Income" EntitySet="Income" />
           </AssociationSet>
           <AssociationSet Name="FK_Tovar_Sup_Supplier" Association="Self.FK_Tovar_Sup_Supplier">
             <End Role="Supplier" EntitySet="Supplier" />
@@ -342,53 +379,16 @@
             <End Role="Type_Tovar" EntitySet="Type_Tovar" />
             <End Role="Tovar_Sup" EntitySet="Tovar_Sup" />
           </AssociationSet>
-          <EntitySet Name="Income" EntityType="GameStoreModel.Income" />
-          <EntitySet Name="Quarter" EntityType="GameStoreModel.Quarter" />
-          <AssociationSet Name="FK_Income_Quarter" Association="GameStoreModel.FK_Income_Quarter">
-            <End Role="Quarter" EntitySet="Quarter" />
-            <End Role="Income" EntitySet="Income" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Income">
-          <Key>
-            <PropertyRef Name="ID_income" />
-          </Key>
-          <Property Name="ID_income" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Income1" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ID_quarter" Type="Int32" />
-          <NavigationProperty Name="Quarter" Relationship="GameStoreModel.FK_Income_Quarter" FromRole="Income" ToRole="Quarter" />
-        </EntityType>
-        <EntityType Name="Quarter">
-          <Key>
-            <PropertyRef Name="ID_quarter" />
-          </Key>
-          <Property Name="ID_quarter" Type="Int32" Nullable="false" />
-          <Property Name="NameQuarter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Income" Relationship="GameStoreModel.FK_Income_Quarter" FromRole="Quarter" ToRole="Income" />
-        </EntityType>
-        <Association Name="FK_Income_Quarter">
-          <End Type="GameStoreModel.Quarter" Role="Quarter" Multiplicity="0..1" />
-          <End Type="GameStoreModel.Income" Role="Income" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quarter">
-              <PropertyRef Name="ID_quarter" />
-            </Principal>
-            <Dependent Role="Income">
-              <PropertyRef Name="ID_quarter" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище GameStoreModelContainer" CdmEntityContainer="GameStoreEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Game_storeModelContainer" CdmEntityContainer="Game_storeEntities">
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="GameStoreModel.Employee">
+            <EntityTypeMapping TypeName="Game_storeModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="PhotoEmployee" ColumnName="PhotoEmployee" />
                 <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -397,19 +397,38 @@
                 <ScalarProperty Name="ID_post" ColumnName="ID_post" />
                 <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="Visible" ColumnName="Visible" />
+                <ScalarProperty Name="PhotoEmployee" ColumnName="PhotoEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Income">
+            <EntityTypeMapping TypeName="Game_storeModel.Income">
+              <MappingFragment StoreEntitySet="Income">
+                <ScalarProperty Name="ID_income" ColumnName="ID_income" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Income1" ColumnName="Income" />
+                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PostEmp">
-            <EntityTypeMapping TypeName="GameStoreModel.PostEmp">
+            <EntityTypeMapping TypeName="Game_storeModel.PostEmp">
               <MappingFragment StoreEntitySet="PostEmp">
                 <ScalarProperty Name="ID_post" ColumnName="ID_post" />
                 <ScalarProperty Name="NamePost" ColumnName="NamePost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Quarter">
+            <EntityTypeMapping TypeName="Game_storeModel.Quarter">
+              <MappingFragment StoreEntitySet="Quarter">
+                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
+                <ScalarProperty Name="NameQuarter" ColumnName="NameQuarter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="GameStoreModel.Supplier">
+            <EntityTypeMapping TypeName="Game_storeModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
                 <ScalarProperty Name="NameSup" ColumnName="NameSup" />
@@ -417,7 +436,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="GameStoreModel.sysdiagrams">
+            <EntityTypeMapping TypeName="Game_storeModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -428,7 +447,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tovar">
-            <EntityTypeMapping TypeName="GameStoreModel.Tovar">
+            <EntityTypeMapping TypeName="Game_storeModel.Tovar">
               <MappingFragment StoreEntitySet="Tovar">
                 <ScalarProperty Name="ID_tovar" ColumnName="ID_tovar" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
@@ -442,7 +461,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tovar_Sup">
-            <EntityTypeMapping TypeName="GameStoreModel.Tovar_Sup">
+            <EntityTypeMapping TypeName="Game_storeModel.Tovar_Sup">
               <MappingFragment StoreEntitySet="Tovar_Sup">
                 <ScalarProperty Name="ID_tovarSup" ColumnName="ID_tovarSup" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
@@ -456,28 +475,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type_Tovar">
-            <EntityTypeMapping TypeName="GameStoreModel.Type_Tovar">
+            <EntityTypeMapping TypeName="Game_storeModel.Type_Tovar">
               <MappingFragment StoreEntitySet="Type_Tovar">
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
                 <ScalarProperty Name="Name_type" ColumnName="Name_type" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Income">
-            <EntityTypeMapping TypeName="GameStoreModel.Income">
-              <MappingFragment StoreEntitySet="Income">
-                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
-                <ScalarProperty Name="Income1" ColumnName="Income" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ID_income" ColumnName="ID_income" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Quarter">
-            <EntityTypeMapping TypeName="GameStoreModel.Quarter">
-              <MappingFragment StoreEntitySet="Quarter">
-                <ScalarProperty Name="NameQuarter" ColumnName="NameQuarter" />
-                <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
