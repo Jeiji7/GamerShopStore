@@ -37,8 +37,8 @@ namespace GamerShopStore.Pages
             DeleteEmployee = employee.ID_employee;
 
             var SelectEmp = (Employee)EmployeeList.SelectedItem;
-            //AlterDiscpline editPage = new AlterDiscpline(SelItems);
-            //NavigationService.Navigate(editPage);
+            AlterEmployee editPage = new AlterEmployee(SelectEmp);
+            NavigationService.Navigate(editPage);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
