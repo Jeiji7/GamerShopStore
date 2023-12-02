@@ -54,11 +54,11 @@
             </StackPanel>
         </StackPanel>
 
-        <Image Grid.Row="1" Grid.Column="1" x:Name="MainImage" Width="300" Height="300"/>
+        <Image Grid.Row="1" Grid.Column="1" x:Name="MainImage" Width="300" Height="300" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="1">
             <Button  Click="Button_Click_ADD" Style="{DynamicResource CommonButton}">
                 <TextBlock TextWrapping="Wrap" Style="{DynamicResource TextListview}" > 
-        Добавить фото
+        Изменить фото
                 </TextBlock>
             </Button>
             <Button  Click="Button_Click_Save" Style="{DynamicResource CommonButton}">
@@ -68,5 +68,11 @@
             </Button>
         </StackPanel>
 
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click">
+            <TextBlock Style="{DynamicResource TextListview}">
+                Назад
+            </TextBlock>
+        </Button>
     </Grid>
 </Page>

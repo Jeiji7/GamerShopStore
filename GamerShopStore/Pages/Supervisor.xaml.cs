@@ -1,5 +1,8 @@
-﻿using System;
+﻿using GamerShopStore.BDSHKA;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,28 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class Supervisor : Page
     {
-        public Supervisor()
+        public Employee employee;
+        public DbSet<Employee> currectUserr;
+
+        public byte[] Imaginaric { get; set; }
+        public Supervisor(Employee currectUser)
         {
             InitializeComponent();
+            employee = currectUser;
+            Imaginaric = currectUser.PhotoEmployee;
+            NamessTB.Text = currectUser.Name;
+
+            MemoryStream byteStream = new MemoryStream(Imaginaric);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = byteStream;
+            image.EndInit();
+            Photo.Source = image;
+        }
+
+        public Supervisor(DbSet<Employee> imagePhoto)
+        {
+            this.currectUserr = imagePhoto;
         }
 
         private void Button_Click_Employees(object sender, RoutedEventArgs e)
@@ -30,9 +52,10 @@ namespace GamerShopStore.Pages
             NavigationService.Navigate(new Employees());
         }
 
-        private void Image_ImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Enter());
         }
     }
 }

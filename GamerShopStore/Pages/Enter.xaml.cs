@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GamerShopStore.BDSHKA;
 
-
 namespace GamerShopStore.Pages
 {
    
@@ -40,15 +39,27 @@ namespace GamerShopStore.Pages
             {
                 MessageBox.Show($"Добро пожаловать {empl.Name} !!!");
                 if (empl.ID_post == 1)
-                    NavigationService.Navigate(new Supervisor());
+                {
+                    Supervisor editPage = new Supervisor(currectUser);
+                    NavigationService.Navigate(editPage);
+                }
                 else if (empl.ID_post == 2)
-                    NavigationService.Navigate(new Supervisor());
+                {
+                    NavigationService.Navigate(new Supervisor(currectUser));
+
+                }
                 else if (empl.ID_post == 3)
-                    NavigationService.Navigate(new Supervisor());
+                {
+
+                    NavigationService.Navigate(new Supervisor(currectUser));
+                }
 
             }
             else
                 MessageBox.Show("Неверный Логин или пароль!!!");
+
+            
+           
         }
     }
 }

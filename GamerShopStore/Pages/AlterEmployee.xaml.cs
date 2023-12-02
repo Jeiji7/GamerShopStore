@@ -38,7 +38,16 @@ namespace GamerShopStore.Pages
             SalaryTB.Text = selectEmp.Salary.ToString();
             LoginTB.Text = selectEmp.Login.ToString();
             PasswordTB.Text = selectEmp.Password.ToString();
-            PostCB.Text = Convert.ToString(employee.ID_post);
+            PostCB.SelectedIndex = (int)(employee.ID_post - 1);
+
+            Imagenaric = selectEmp.PhotoEmployee;
+            
+            MemoryStream byteStream = new MemoryStream(selectEmp.PhotoEmployee);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = byteStream;
+            image.EndInit();
+            MainImage.Source = image;
         }
 
         private void Button_Click_ADD(object sender, RoutedEventArgs e)
@@ -56,19 +65,21 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Save(object sender, RoutedEventArgs e)
         {
-            Employee employee1 = new Employee()
-            {
-                Name = NamesTB.Text.Trim(),
-                Phone = PhoneTB.Text.Trim(),
-                Login = LoginTB.Text.Trim(),
-                Password = PasswordTB.Text.Trim(),
-                Salary = Convert.ToInt32(SalaryTB.Text),
-                Visible = true,
-                ID_post = (PostCB.SelectedItem as PostEmp).ID_post,
-                PhotoEmployee = Imagenaric
-            };
-            App.BD.Employee.Add(employee1);
+            employee.Name = NamesTB.Text.Trim();
+            employee.Phone = PhoneTB.Text.Trim();
+            employee.Login = LoginTB.Text.Trim();
+            employee.Password = PasswordTB.Text.Trim();
+            employee.Salary = Convert.ToDecimal(SalaryTB.Text);
+            employee.Visible = true;
+            employee.ID_post = (PostCB.SelectedItem as PostEmp).ID_post;
+            employee.PhotoEmployee = Imagenaric;
+           
             App.BD.SaveChanges();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Employees());
         }
     }
 }

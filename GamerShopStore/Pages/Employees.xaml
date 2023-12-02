@@ -60,14 +60,21 @@
         </ListView>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
-            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click" >
-                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
-                Удалить сотрудника
-                </TextBlock>
-            </Button>
+       
+          
             <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_ADD" >
                 <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
-                Добавить сотрудника
+                Добавить 
+                </TextBlock>
+            </Button>
+            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_Alter" >
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
+                Изменение
+                </TextBlock>
+            </Button>
+            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_Delete" >
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
+                Удалить
                 </TextBlock>
             </Button>
         </StackPanel>

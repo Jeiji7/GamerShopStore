@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Game_storeModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище GameStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID_employee" />
@@ -15,7 +15,7 @@
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="ID_post" Type="int" />
-          <Property Name="Salary" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="Salary" Type="decimal" Precision="13" Scale="3" />
           <Property Name="Visible" Type="bit" />
           <Property Name="PhotoEmployee" Type="varbinary(max)" />
         </EntityType>
@@ -154,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище Game_storeModelContainer">
+        <EntityContainer Name="Хранилище GameStoreModelContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" Schema="dbo" store:Type="Tables" />
@@ -185,11 +185,10 @@
             <End Role="Tovar" EntitySet="Tovar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Game_storeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GameStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID_employee" />
@@ -200,7 +199,7 @@
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_post" Type="Int32" />
-          <Property Name="Salary" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="Salary" Type="Decimal" Precision="13" Scale="3" />
           <Property Name="Visible" Type="Boolean" />
           <Property Name="PhotoEmployee" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="PostEmp" Relationship="Self.FK_Employee_PostEmp" FromRole="Employee" ToRole="PostEmp" />
@@ -349,7 +348,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Game_storeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GameStoreEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Income" EntityType="Self.Income" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" />
@@ -385,9 +384,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Game_storeModelContainer" CdmEntityContainer="Game_storeEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GameStoreModelContainer" CdmEntityContainer="GameStoreEntities">
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="Game_storeModel.Employee">
+            <EntityTypeMapping TypeName="GameStoreModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="ID_employee" ColumnName="ID_employee" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -402,7 +401,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Income">
-            <EntityTypeMapping TypeName="Game_storeModel.Income">
+            <EntityTypeMapping TypeName="GameStoreModel.Income">
               <MappingFragment StoreEntitySet="Income">
                 <ScalarProperty Name="ID_income" ColumnName="ID_income" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -412,7 +411,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PostEmp">
-            <EntityTypeMapping TypeName="Game_storeModel.PostEmp">
+            <EntityTypeMapping TypeName="GameStoreModel.PostEmp">
               <MappingFragment StoreEntitySet="PostEmp">
                 <ScalarProperty Name="ID_post" ColumnName="ID_post" />
                 <ScalarProperty Name="NamePost" ColumnName="NamePost" />
@@ -420,7 +419,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Quarter">
-            <EntityTypeMapping TypeName="Game_storeModel.Quarter">
+            <EntityTypeMapping TypeName="GameStoreModel.Quarter">
               <MappingFragment StoreEntitySet="Quarter">
                 <ScalarProperty Name="ID_quarter" ColumnName="ID_quarter" />
                 <ScalarProperty Name="NameQuarter" ColumnName="NameQuarter" />
@@ -428,7 +427,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="Game_storeModel.Supplier">
+            <EntityTypeMapping TypeName="GameStoreModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
                 <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
                 <ScalarProperty Name="NameSup" ColumnName="NameSup" />
@@ -436,7 +435,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Game_storeModel.sysdiagrams">
+            <EntityTypeMapping TypeName="GameStoreModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -447,7 +446,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tovar">
-            <EntityTypeMapping TypeName="Game_storeModel.Tovar">
+            <EntityTypeMapping TypeName="GameStoreModel.Tovar">
               <MappingFragment StoreEntitySet="Tovar">
                 <ScalarProperty Name="ID_tovar" ColumnName="ID_tovar" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
@@ -461,7 +460,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tovar_Sup">
-            <EntityTypeMapping TypeName="Game_storeModel.Tovar_Sup">
+            <EntityTypeMapping TypeName="GameStoreModel.Tovar_Sup">
               <MappingFragment StoreEntitySet="Tovar_Sup">
                 <ScalarProperty Name="ID_tovarSup" ColumnName="ID_tovarSup" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
@@ -475,7 +474,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Type_Tovar">
-            <EntityTypeMapping TypeName="Game_storeModel.Type_Tovar">
+            <EntityTypeMapping TypeName="GameStoreModel.Type_Tovar">
               <MappingFragment StoreEntitySet="Type_Tovar">
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
                 <ScalarProperty Name="Name_type" ColumnName="Name_type" />

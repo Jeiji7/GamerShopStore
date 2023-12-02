@@ -71,6 +71,11 @@
                 </TextBlock>
             </Button>
         </StackPanel>
-    
+
+        <Button Grid.Row="2" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click">
+            <TextBlock Style="{DynamicResource TextListview}">
+                Назад
+            </TextBlock>
+        </Button>
     </Grid>
 </Page>

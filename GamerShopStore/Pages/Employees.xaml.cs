@@ -33,24 +33,33 @@ namespace GamerShopStore.Pages
 
         private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+         //Может что то будет)   
+        }
+
+        private void Button_Click_Alter(object sender, RoutedEventArgs e)
+        {
             employee = (Employee)EmployeeList.SelectedItem;
             DeleteEmployee = employee.ID_employee;
-
             var SelectEmp = (Employee)EmployeeList.SelectedItem;
             AlterEmployee editPage = new AlterEmployee(SelectEmp);
             NavigationService.Navigate(editPage);
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            EmployeeList.SelectedIndex = DeleteEmployee;
-            employee.Visible = false;
-            App.BD.SaveChanges();
-            NavigationService.Navigate(new Employees());
-        }
+
 
         private void Button_Click_ADD(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddEmployee());
+        }
+
+        private void Button_Click_Delete(object sender, RoutedEventArgs e)
+        {
+            employee = (Employee)EmployeeList.SelectedItem;
+            DeleteEmployee = employee.ID_employee;
+            EmployeeList.SelectedIndex = DeleteEmployee;
+            employee.Visible = false;
+            App.BD.SaveChanges();
+            MessageBox.Show($"Cотрудник {employee.Name} успешно удалён") ;
+            NavigationService.Navigate(new Employees());
         }
     }
 }

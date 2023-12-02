@@ -44,5 +44,15 @@ namespace GamerShopStore.Pages
 
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
