@@ -23,7 +23,7 @@
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
         <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="10">Товары на складе</TextBlock>
-        <ListView x:Name="StockTovarList" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="EmployeeList_SelectionChanged" >
+        <ListView x:Name="StockTovarList" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="StockTovarList_SelectionChanged" >
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

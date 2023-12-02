@@ -40,7 +40,6 @@ namespace GamerShopStore.Pages
             AlterEmployee editPage = new AlterEmployee(SelectEmp);
             NavigationService.Navigate(editPage);
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             EmployeeList.SelectedIndex = DeleteEmployee;
