@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище GameStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище GameStoreModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID_employee" />
@@ -66,11 +66,12 @@
           <Property Name="ID_tovar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTovar" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="3" />
-          <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Counts" Type="int" />
           <Property Name="ID_type" Type="int" />
+          <Property Name="ID_sup" Type="int" />
           <Property Name="ImageTovar" Type="varbinary(max)" />
           <Property Name="VisibleTov" Type="bit" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Tovar_Sup">
           <Key>
@@ -185,7 +186,8 @@
             <End Role="Tovar" EntitySet="Tovar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GameStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -255,11 +257,12 @@
           <Property Name="ID_tovar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameTovar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="8" Scale="3" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Counts" Type="Int32" />
           <Property Name="ID_type" Type="Int32" />
+          <Property Name="ID_sup" Type="Int32" />
           <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="VisibleTov" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Type_Tovar" FromRole="Tovar" ToRole="Type_Tovar" />
         </EntityType>
         <EntityType Name="Tovar_Sup">
@@ -451,11 +454,12 @@
                 <ScalarProperty Name="ID_tovar" ColumnName="ID_tovar" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Counts" ColumnName="Counts" />
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
+                <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
                 <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
                 <ScalarProperty Name="VisibleTov" ColumnName="VisibleTov" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

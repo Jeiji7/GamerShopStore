@@ -27,8 +27,8 @@
             <TextBlock x:Name="NamessTB"   Margin="20 0" Style="{DynamicResource paragraph}"></TextBlock>
         </StackPanel>
         <TextBlock  Grid.RowSpan="1" Grid.Column="0" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Bisque" Style="{DynamicResource paragraph}">Опции руководителя: </TextBlock>
-        <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Покупка</Button>
-        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Склад</Button>
+        <Button Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Магазин</Button>
+        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}" Click="Button_Click_1">Закупка</Button>
         <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}" Click="Button_Click_Employees">Сотрудники</Button>
         <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Финансы</Button>
         <Button Grid.Row="3" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click">

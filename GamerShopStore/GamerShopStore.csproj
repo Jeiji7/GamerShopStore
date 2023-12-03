@@ -159,6 +159,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SupplierListik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AddEmployee.xaml.cs">
@@ -190,6 +194,9 @@
     </Compile>
     <Compile Include="Pages\Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SupplierListik.xaml.cs">
+      <DependentUpon>SupplierListik.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
