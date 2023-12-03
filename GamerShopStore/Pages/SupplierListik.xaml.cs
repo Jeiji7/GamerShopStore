@@ -29,5 +29,10 @@ namespace GamerShopStore.Pages
         {
 
         }
+
+        private void Button_Click_Order(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
