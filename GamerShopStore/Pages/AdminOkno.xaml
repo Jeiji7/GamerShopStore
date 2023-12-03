@@ -27,9 +27,9 @@
             <TextBlock x:Name="NamessTB"   Margin="20 0" Style="{DynamicResource paragraph}"></TextBlock>
         </StackPanel>
         <TextBlock  Grid.RowSpan="1" Grid.Column="0" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="Bisque" Style="{DynamicResource paragraph}">Опции админа:</TextBlock>
-        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}">Склад</Button>
-        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}" Click="Button_Click_Admin">Магазин</Button>
-        <Button Grid.Row="3" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click">
+        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}" Click="Button_Click_Stock">Склад</Button>
+        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource WidthButton}" Click="Button_Click_Store">Магазин</Button>
+        <Button Grid.Row="3" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click_Back">
             <TextBlock Style="{DynamicResource TextListview}">
                 Назад
             </TextBlock>

@@ -24,5 +24,22 @@ namespace GamerShopStore.Pages
         {
             InitializeComponent();
         }
+
+       
+
+        private void Button_Click_Stock(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StockTovar());
+        }
+
+        private void Button_Click_Store(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new());
+        }
+
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Enter());
+        }
     }
 }
