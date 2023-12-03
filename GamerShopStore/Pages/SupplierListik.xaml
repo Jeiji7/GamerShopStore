@@ -9,6 +9,8 @@
       Title="SupplierListik">
 
     <Grid>
-        
+        <StackPanel>
+            <TextBlock></TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
