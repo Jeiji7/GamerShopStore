@@ -151,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\StoreTovar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Supervisor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -180,6 +184,9 @@
     </Compile>
     <Compile Include="Pages\StockTovar.xaml.cs">
       <DependentUpon>StockTovar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StoreTovar.xaml.cs">
+      <DependentUpon>StoreTovar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Supervisor.xaml.cs">
       <DependentUpon>Supervisor.xaml</DependentUpon>
