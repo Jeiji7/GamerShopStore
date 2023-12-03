@@ -9,8 +9,56 @@
       Title="SupplierListik">
 
     <Grid>
-        <StackPanel>
-            <TextBlock></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="185"/>
+            <RowDefinition Height="185"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="540*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
+        </Grid.Background>
+        <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="5">Список поставщиков:</TextBlock>
+        <ListView x:Name="EmployeeList" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="EmployeeList_SelectionChanged" >
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Номер" Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Salary}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Наименование поставщика" Width="320">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Style="{StaticResource TextListview}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+
+
+            <TextBlock Style="{DynamicResource paragraph}">
+                Для покупки нажмите:
+            </TextBlock>
+            <Button  Style="{DynamicResource CommonButton}" Click="Button_Click_Order" >
+                <TextBlock Style="{DynamicResource TextListview}" TextWrapping="Wrap" >
+                Заказать
+                </TextBlock>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
