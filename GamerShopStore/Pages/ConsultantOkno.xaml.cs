@@ -24,5 +24,15 @@ namespace GamerShopStore.Pages
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Enter());
+        }
+
+        private void Button_Click_Consul(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new );
+        }
     }
 }
