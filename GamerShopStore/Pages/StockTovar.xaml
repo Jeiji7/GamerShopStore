@@ -27,38 +27,31 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Название" Width="130">
+                        <GridViewColumn Header="Название" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding Path=NameTovar}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Цена" Width="80">
+                        <GridViewColumn Header="Цена" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding Path=Price}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Кол-во" Width="80">
+                        <GridViewColumn Header="Кол-во" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding Path=Counts}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Вид" Width="130">
+                        <GridViewColumn Header="Категория" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=Type_Tovar.Name_type}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Фото" Width="130">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Path=ImageTovar}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

@@ -131,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ConsultantOkno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Employees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -161,6 +165,9 @@
     </Compile>
     <Compile Include="Pages\AlterEmployee.xaml.cs">
       <DependentUpon>AlterEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConsultantOkno.xaml.cs">
+      <DependentUpon>ConsultantOkno.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
