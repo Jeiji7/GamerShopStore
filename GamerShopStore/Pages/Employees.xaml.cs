@@ -36,16 +36,14 @@ namespace GamerShopStore.Pages
 
         private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DeleteEmployee = EmployeeList.SelectedIndex;
          //Может что то будет)   
         }
 
         private void Button_Click_Alter(object sender, RoutedEventArgs e)
         {
-            if (DeleteEmployee != 0)
+            if (DeleteEmployee != -1)
             {
                 employee = (Employee)EmployeeList.SelectedItem;
-                DeleteEmployee = employee.ID_employee;
                 var SelectEmp = (Employee)EmployeeList.SelectedItem;
                 AlterEmployee editPage = new AlterEmployee(SelectEmp);
                 NavigationService.Navigate(editPage);
@@ -63,9 +61,9 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
-            if (DeleteEmployee != 0)
+            if (EmployeeList.SelectedIndex != -1)
             {
-                EmployeeList.SelectedIndex = DeleteEmployee;
+                employee = (Employee)EmployeeList.SelectedItem;
                 employee.Visible = false;
                 App.BD.SaveChanges();
                 MessageBox.Show($"Cотрудник {employee.Name} успешно удалён") ;

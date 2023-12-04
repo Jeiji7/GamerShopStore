@@ -21,7 +21,7 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class SupplierListik : Page
     {
-        public Supplier supplier;
+        public Supplier supplier { get; set; }
         public int SupplierChoice { get; set; }
         public SupplierListik()
         {
@@ -31,15 +31,15 @@ namespace GamerShopStore.Pages
 
         private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SupplierChoice = SupplierList.SelectedIndex;
+            
         }
 
         private void Button_Click_Order(object sender, RoutedEventArgs e)
         {
-            if (SupplierChoice != 0)
+            if (SupplierList.SelectedIndex != -1)
             {
                 supplier = (Supplier)SupplierList.SelectedItem;
-                SupplierChoice = supplier.ID_sup;
+                //SupplierChoice = supplier.ID_sup;
                 var SelectTovar = (Supplier)SupplierList.SelectedItem;
                 TovarSupplier editPage = new TovarSupplier(SelectTovar);
                 NavigationService.Navigate(editPage);
