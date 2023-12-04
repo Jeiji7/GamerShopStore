@@ -19,7 +19,7 @@ namespace GamerShopStore.Pages
    
     public partial class Enter : Page
     {
-        public static Employee empl;
+        public static  Employee empl { get; set; }
         public static List<Employee> employee { get; set; }
 
         public Enter()

@@ -12,22 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GamerShopStore.BDSHKA;
 
 namespace GamerShopStore.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для StoreTovar.xaml
+    /// Логика взаимодействия для TovarSupplier.xaml
     /// </summary>
-    public partial class StoreTovar : Page
+    public partial class TovarSupplier : Page
     {
-        public StoreTovar()
+        public Supplier supplier;
+        public TovarSupplier(Supplier SelectTovar)
         {
             InitializeComponent();
-        }
-
-        private void StockTovarList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            supplier = SelectTovar;
         }
     }
 }

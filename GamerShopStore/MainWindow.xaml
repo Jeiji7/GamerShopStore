@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GamerShopStore"
         mc:Ignorable="d"
-        Title="GamerShop" Height="450" Width="800">
+        Title="GamerShop" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
