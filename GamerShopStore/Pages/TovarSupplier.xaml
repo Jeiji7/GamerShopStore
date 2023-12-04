@@ -9,14 +9,14 @@
       Title="TovarSupplier">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="370"/>
-            <RowDefinition Height="80"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="210*"/>
+            <ColumnDefinition Width="170*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="370*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
@@ -26,7 +26,7 @@
                 <StackPanel  HorizontalAlignment="Left">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Название</TextBlock>
-                        <ComboBox x:Name="NamesTB" Width="160" Height="40" FontFamily="Inpact" DisplayMemberPath="NameTovar"></ComboBox>
+                        <ComboBox x:Name="NamesCB" Width="160" Height="40" FontFamily="Inpact" DisplayMemberPath="NameTovar"></ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Стоимость</TextBlock>
@@ -52,7 +52,7 @@
         <Image Grid.Row="0" Grid.Column="1" x:Name="MainImage" Width="300" Height="300" />
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Margin="5 5" VerticalAlignment="Top">
-                <TextBlock Style="{DynamicResource TextListview}">Кол-во товаров для покупки:</TextBlock>
+                <TextBlock Style="{DynamicResource paragraph}" FontSize="18">Кол-во товаров для покупки:</TextBlock>
                 <TextBox x:Name="CountsStockTB"></TextBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5">

@@ -22,10 +22,17 @@ namespace GamerShopStore.Pages
     public partial class TovarSupplier : Page
     {
         public Supplier supplier;
+
         public TovarSupplier(Supplier SelectTovar)
         {
             InitializeComponent();
             supplier = SelectTovar;
+            var typee = App.BD.Tovar_Sup.ToList();
+            NamesCB.ItemsSource = typee.ToList();
+            NamesCB.DisplayMemberPath = "NameTovar";
+            //NamesCB.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_sup == typee.ID_sup));
+            //NameCB.ItemsSource = Connection.BD.Product.Where(j => j.ID_type == type.ID_type).ToList();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -48,7 +48,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <TextBlock Style="{DynamicResource paragraph}">Должность</TextBlock>
-                    <ComboBox Width="160" Height="40" FontFamily="Inpact" x:Name="PostCB" DisplayMemberPath="NamePost"/>
+                    <ComboBox Width="160" Height="40" FontFamily="Inpact" x:Name="PostCB" DisplayMemberPath="NamePost" />
 
                 </StackPanel>
             </StackPanel>
