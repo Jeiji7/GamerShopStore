@@ -27,32 +27,19 @@ namespace GamerShopStore.Pages
         public StockTovar()
         {
             InitializeComponent();
-            //StockTovarList.ItemsSource = App.BD.Tovar_stock.Where(x => x.VisibleStock == true).ToList();
+            StockTovarList.ItemsSource = App.BD.Tovar.ToList();
         }
 
+        private void Button_Click_back(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AdminOkno());
+        }
 
         private void StockTovarList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //tovar_stocks = (Tovar_stock)StockTovarList.SelectedItem;
-
-
-
-
-
-
-
-
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EmployeeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            var SelectTovar = (Tovar)StockTovarList.SelectedItem;
+            SpecificTovarStock EditPage = new SpecificTovarStock(SelectTovar);
+            NavigationService.Navigate(EditPage);
         }
     }
 }

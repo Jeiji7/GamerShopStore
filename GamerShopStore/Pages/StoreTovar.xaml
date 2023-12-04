@@ -22,7 +22,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
-        <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="10">Товары на складе</TextBlock>
+        <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="2" HorizontalAlignment="Left" FontSize="38">Товары на складе:</TextBlock>
         <ListView x:Name="StockTovarList" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="StockTovarList_SelectionChanged" >
             <ListView.View>
                 <GridView>
@@ -60,16 +60,16 @@
             </ListView.View>
         </ListView>
         <StackPanel Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBlock FontSize="20" Style="{StaticResource TextListview}">Поиск по названию</TextBlock>
+            <TextBlock FontSize="20" Style="{DynamicResource paragraph}">Поиск по названию</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center">
             <TextBox x:Name="SearchTB" Width="200" Height="35"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
-            <TextBlock FontSize="20" Style="{StaticResource TextListview}">по категории</TextBlock>
+            <TextBlock FontSize="20" Style="{DynamicResource paragraph}">по категории</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <ComboBox x:Name="CategCB" Width="150" Height="35" DisplayMemberPath="Name_type"></ComboBox>
+            <ComboBox x:Name="TypeCB" Width="160" Height="35" DisplayMemberPath="Name_type"></ComboBox>
         </StackPanel>
        
     </Grid>
