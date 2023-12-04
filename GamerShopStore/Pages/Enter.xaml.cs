@@ -45,8 +45,8 @@ namespace GamerShopStore.Pages
                 }
                 else if (empl.ID_post == 2)
                 {
-                    NavigationService.Navigate(new Supervisor(currectUser));
-
+                    AdminOkno editPage = new AdminOkno(currectUser);
+                    NavigationService.Navigate(editPage);
                 }
                 else if (empl.ID_post == 3)
                 {

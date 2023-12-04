@@ -1,5 +1,8 @@
-﻿using System;
+﻿using GamerShopStore.BDSHKA;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +23,29 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class AdminOkno : Page
     {
-        public AdminOkno()
+        public Employee employee;
+        public DbSet<Employee> currentUser;
+
+        public byte[] Imaginaric { get; set; }
+        public AdminOkno(Employee currentUser)
         {
             InitializeComponent();
+            employee = currentUser;
+            Imaginaric = currentUser.PhotoEmployee;
+            NamessTB.Text = currentUser.Name;
+
+            MemoryStream byteStream = new MemoryStream(Imaginaric);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = byteStream;
+            image.EndInit();
+            Photo.Source = image;
+        }
+        public AdminOkno(DbSet<Employee> imagePhoto)
+        {
+            this.currentUser = imagePhoto;
         }
 
-       
 
         private void Button_Click_Stock(object sender, RoutedEventArgs e)
         {
