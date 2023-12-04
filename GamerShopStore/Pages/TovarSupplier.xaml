@@ -9,9 +9,65 @@
       Title="TovarSupplier">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="370"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
-        <TextBlock>Закупка товара</TextBlock>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+            <TextBlock Grid.Row="0" Grid.Column="0" Style="{DynamicResource paragraph}">Закупка товара:</TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <StackPanel  HorizontalAlignment="Left">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">Название</TextBlock>
+                        <ComboBox x:Name="NamesTB" Width="160" Height="40" FontFamily="Inpact" DisplayMemberPath="NameTovar"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">Стоимость</TextBlock>
+                        <TextBox x:Name="PriceTb"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">Кол-во</TextBlock>
+                        <TextBox x:Name="SalaryTB"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Left">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">Номер Sup</TextBlock>
+                        <TextBox x:Name="ID_supTB"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">Категория</TextBlock>
+                        <TextBox x:Name="TypeTB"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Image Grid.Row="0" Grid.Column="1" x:Name="MainImage" Width="300" Height="300" />
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Margin="5 5" VerticalAlignment="Top">
+                <TextBlock Style="{DynamicResource TextListview}">Кол-во товаров для покупки:</TextBlock>
+                <TextBox x:Name="CountsStockTB"></TextBox>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5">
+                <Button Style="{StaticResource CommonButton}">
+                    <TextBlock Style="{DynamicResource TextListview}">
+                        Заказать
+                    </TextBlock>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        
+        <Button Grid.Row="2" Grid.Column="0" Style="{DynamicResource CommonButton}" HorizontalAlignment="Left" Click="Button_Click">
+            <TextBlock Style="{DynamicResource TextListview}">
+                Назад
+            </TextBlock>
+        </Button>
     </Grid>
 </Page>

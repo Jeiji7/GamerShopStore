@@ -25,7 +25,6 @@ namespace GamerShopStore.Pages
     {
         public static Employee employee;
 
-        public int DeleteEmployee { get; set; }
         public Employees()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Alter(object sender, RoutedEventArgs e)
         {
-            if (DeleteEmployee != -1)
+            if (EmployeeList.SelectedIndex != -1)
             {
                 employee = (Employee)EmployeeList.SelectedItem;
                 var SelectEmp = (Employee)EmployeeList.SelectedItem;
