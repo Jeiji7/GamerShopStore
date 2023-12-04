@@ -19,15 +19,15 @@ using System.Windows.Shapes;
 namespace GamerShopStore.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AdminOkno.xaml
+    /// Логика взаимодействия для Consultant.xaml
     /// </summary>
-    public partial class AdminOkno : Page
+    public partial class Consultant : Page
     {
         public Employee employee;
         public DbSet<Employee> currentUser;
 
         public byte[] Imaginaric { get; set; }
-        public AdminOkno(Employee currentUser)
+        public Consultant(Employee currentUser)
         {
             InitializeComponent();
             employee = currentUser;
@@ -41,32 +41,26 @@ namespace GamerShopStore.Pages
             image.EndInit();
             Photo.Source = image;
         }
-        public AdminOkno(DbSet<Employee> imagePhoto)
+        public Consultant(DbSet<Employee> imagePhoto)
         {
             this.currentUser = imagePhoto;
         }
 
-        public AdminOkno()
+        public Consultant()
         {
             InitializeComponent();
-            NamessTB.Text = "Камилла";
+            NamessTB.Text = "Рамиль";
             //ФОТКИ И НИКА НЕТ
 
         }
-
-        private void Button_Click_Stock(object sender, RoutedEventArgs e)
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new StockTovar());
+            NavigationService.Navigate(new Enter());
         }
 
         private void Button_Click_Store(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new());
-        }
 
-        private void Button_Click_Back(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Enter());
         }
     }
 }

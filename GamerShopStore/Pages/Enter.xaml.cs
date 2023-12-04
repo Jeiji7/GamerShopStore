@@ -50,8 +50,8 @@ namespace GamerShopStore.Pages
                 }
                 else if (empl.ID_post == 3)
                 {
-
-                    NavigationService.Navigate(new Supervisor(currectUser));
+                    Consultant editPage = new Consultant(currectUser);
+                    NavigationService.Navigate(editPage);
                 }
 
             }
