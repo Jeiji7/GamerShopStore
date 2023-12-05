@@ -59,32 +59,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Tovar">
-          <Key>
-            <PropertyRef Name="ID_tovar" />
-          </Key>
-          <Property Name="ID_tovar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameTovar" Type="nvarchar" MaxLength="50" />
-          <Property Name="Price" Type="decimal" Precision="8" Scale="3" />
-          <Property Name="Counts" Type="int" />
-          <Property Name="ID_type" Type="int" />
-          <Property Name="ID_sup" Type="int" />
-          <Property Name="ImageTovar" Type="varbinary(max)" />
-          <Property Name="VisibleTov" Type="bit" />
-          <Property Name="Description" Type="nvarchar(max)" />
-        </EntityType>
         <EntityType Name="Tovar_Sup">
           <Key>
             <PropertyRef Name="ID_tovarSup" />
           </Key>
-          <Property Name="ID_tovarSup" Type="int" Nullable="false" />
+          <Property Name="ID_tovarSup" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameTovar" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="decimal" Precision="8" Scale="3" />
-          <Property Name="Counts" Type="int" />
+          <Property Name="CountsTovar" Type="nchar" MaxLength="10" />
+          <Property Name="CountsSup" Type="int" />
           <Property Name="ID_type" Type="int" />
           <Property Name="ID_sup" Type="int" />
           <Property Name="ImageTovar" Type="varbinary(max)" />
           <Property Name="VisibleSup" Type="bit" />
+          <Property Name="VisibleTovar" Type="bit" />
         </EntityType>
         <EntityType Name="Type_Tovar">
           <Key>
@@ -143,18 +131,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tovar_Type_Tovar">
-          <End Role="Type_Tovar" Type="Self.Type_Tovar" Multiplicity="0..1" />
-          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Type_Tovar">
-              <PropertyRef Name="ID_type" />
-            </Principal>
-            <Dependent Role="Tovar">
-              <PropertyRef Name="ID_type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище GameStoreModelContainer">
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Income" EntityType="Self.Income" Schema="dbo" store:Type="Tables" />
@@ -162,7 +138,6 @@
           <EntitySet Name="Quarter" EntityType="Self.Quarter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tovar" EntityType="Self.Tovar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tovar_Sup" EntityType="Self.Tovar_Sup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Type_Tovar" EntityType="Self.Type_Tovar" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Employee_PostEmp" Association="Self.FK_Employee_PostEmp">
@@ -180,10 +155,6 @@
           <AssociationSet Name="FK_Tovar_Sup_Type_Tovar" Association="Self.FK_Tovar_Sup_Type_Tovar">
             <End Role="Type_Tovar" EntitySet="Type_Tovar" />
             <End Role="Tovar_Sup" EntitySet="Tovar_Sup" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tovar_Type_Tovar" Association="Self.FK_Tovar_Type_Tovar">
-            <End Role="Type_Tovar" EntitySet="Type_Tovar" />
-            <End Role="Tovar" EntitySet="Tovar" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -250,33 +221,20 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Tovar">
-          <Key>
-            <PropertyRef Name="ID_tovar" />
-          </Key>
-          <Property Name="ID_tovar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTovar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="8" Scale="3" />
-          <Property Name="Counts" Type="Int32" />
-          <Property Name="ID_type" Type="Int32" />
-          <Property Name="ID_sup" Type="Int32" />
-          <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="VisibleTov" Type="Boolean" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Type_Tovar" FromRole="Tovar" ToRole="Type_Tovar" />
-        </EntityType>
         <EntityType Name="Tovar_Sup">
           <Key>
             <PropertyRef Name="ID_tovarSup" />
           </Key>
-          <Property Name="ID_tovarSup" Type="Int32" Nullable="false" />
+          <Property Name="ID_tovarSup" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameTovar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="8" Scale="3" />
-          <Property Name="Counts" Type="Int32" />
+          <Property Name="CountsTovar" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CountsSup" Type="Int32" />
           <Property Name="ID_type" Type="Int32" />
           <Property Name="ID_sup" Type="Int32" />
           <Property Name="ImageTovar" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="VisibleSup" Type="Boolean" />
+          <Property Name="VisibleTovar" Type="Boolean" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK_Tovar_Sup_Supplier" FromRole="Tovar_Sup" ToRole="Supplier" />
           <NavigationProperty Name="Type_Tovar" Relationship="Self.FK_Tovar_Sup_Type_Tovar" FromRole="Tovar_Sup" ToRole="Type_Tovar" />
         </EntityType>
@@ -286,7 +244,6 @@
           </Key>
           <Property Name="ID_type" Type="Int32" Nullable="false" />
           <Property Name="Name_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tovar" Relationship="Self.FK_Tovar_Type_Tovar" FromRole="Type_Tovar" ToRole="Tovar" />
           <NavigationProperty Name="Tovar_Sup" Relationship="Self.FK_Tovar_Sup_Type_Tovar" FromRole="Type_Tovar" ToRole="Tovar_Sup" />
         </EntityType>
         <Association Name="FK_Employee_PostEmp">
@@ -327,18 +284,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Tovar_Type_Tovar">
-          <End Role="Type_Tovar" Type="Self.Type_Tovar" Multiplicity="0..1" />
-          <End Role="Tovar" Type="Self.Tovar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Type_Tovar">
-              <PropertyRef Name="ID_type" />
-            </Principal>
-            <Dependent Role="Tovar">
-              <PropertyRef Name="ID_type" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Tovar_Sup_Type_Tovar">
           <End Role="Type_Tovar" Type="Self.Type_Tovar" Multiplicity="0..1" />
           <End Role="Tovar_Sup" Type="Self.Tovar_Sup" Multiplicity="*" />
@@ -358,7 +303,6 @@
           <EntitySet Name="Quarter" EntityType="Self.Quarter" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Tovar" EntityType="Self.Tovar" />
           <EntitySet Name="Tovar_Sup" EntityType="Self.Tovar_Sup" />
           <EntitySet Name="Type_Tovar" EntityType="Self.Type_Tovar" />
           <AssociationSet Name="FK_Employee_PostEmp" Association="Self.FK_Employee_PostEmp">
@@ -372,10 +316,6 @@
           <AssociationSet Name="FK_Tovar_Sup_Supplier" Association="Self.FK_Tovar_Sup_Supplier">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="Tovar_Sup" EntitySet="Tovar_Sup" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tovar_Type_Tovar" Association="Self.FK_Tovar_Type_Tovar">
-            <End Role="Type_Tovar" EntitySet="Type_Tovar" />
-            <End Role="Tovar" EntitySet="Tovar" />
           </AssociationSet>
           <AssociationSet Name="FK_Tovar_Sup_Type_Tovar" Association="Self.FK_Tovar_Sup_Type_Tovar">
             <End Role="Type_Tovar" EntitySet="Type_Tovar" />
@@ -448,32 +388,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tovar">
-            <EntityTypeMapping TypeName="GameStoreModel.Tovar">
-              <MappingFragment StoreEntitySet="Tovar">
-                <ScalarProperty Name="ID_tovar" ColumnName="ID_tovar" />
-                <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Counts" ColumnName="Counts" />
-                <ScalarProperty Name="ID_type" ColumnName="ID_type" />
-                <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
-                <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
-                <ScalarProperty Name="VisibleTov" ColumnName="VisibleTov" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tovar_Sup">
             <EntityTypeMapping TypeName="GameStoreModel.Tovar_Sup">
               <MappingFragment StoreEntitySet="Tovar_Sup">
                 <ScalarProperty Name="ID_tovarSup" ColumnName="ID_tovarSup" />
                 <ScalarProperty Name="NameTovar" ColumnName="NameTovar" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Counts" ColumnName="Counts" />
+                <ScalarProperty Name="CountsTovar" ColumnName="CountsTovar" />
+                <ScalarProperty Name="CountsSup" ColumnName="CountsSup" />
                 <ScalarProperty Name="ID_type" ColumnName="ID_type" />
                 <ScalarProperty Name="ID_sup" ColumnName="ID_sup" />
                 <ScalarProperty Name="ImageTovar" ColumnName="ImageTovar" />
                 <ScalarProperty Name="VisibleSup" ColumnName="VisibleSup" />
+                <ScalarProperty Name="VisibleTovar" ColumnName="VisibleTovar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,15 +17,12 @@ namespace GamerShopStore.BDSHKA
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Type_Tovar()
         {
-            this.Tovar = new HashSet<Tovar>();
             this.Tovar_Sup = new HashSet<Tovar_Sup>();
         }
     
         public int ID_type { get; set; }
         public string Name_type { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tovar> Tovar { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tovar_Sup> Tovar_Sup { get; set; }
     }

@@ -17,11 +17,13 @@ namespace GamerShopStore.BDSHKA
         public int ID_tovarSup { get; set; }
         public string NameTovar { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public Nullable<int> Counts { get; set; }
+        public string CountsTovar { get; set; }
+        public Nullable<int> CountsSup { get; set; }
         public Nullable<int> ID_type { get; set; }
         public Nullable<int> ID_sup { get; set; }
         public byte[] ImageTovar { get; set; }
         public Nullable<bool> VisibleSup { get; set; }
+        public Nullable<bool> VisibleTovar { get; set; }
     
         public virtual Supplier Supplier { get; set; }
         public virtual Type_Tovar Type_Tovar { get; set; }

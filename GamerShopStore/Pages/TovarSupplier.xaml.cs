@@ -27,17 +27,24 @@ namespace GamerShopStore.Pages
         {
             InitializeComponent();
             supplier = SelectTovar;
-            var typee = App.BD.Tovar_Sup.ToList();
-            NamesCB.ItemsSource = typee.ToList();
+            DataContext = SelectTovar;
+            //ID_supTB.Text = SelectTovar.ID_sup.ToString();
+            
+            NamesCB.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_sup == SelectTovar.ID_sup).ToList();
             NamesCB.DisplayMemberPath = "NameTovar";
-            //NamesCB.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_sup == typee.ID_sup));
-            //NameCB.ItemsSource = Connection.BD.Product.Where(j => j.ID_type == type.ID_type).ToList();
-
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Supplier());
+        }
+
+        private void NamesCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //var name = NamesCB.SelectedItem as Tovar_Sup;
+            //var ID = ID_supTB.Text;
+            //NamesCB.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_sup == name.ID_sup).ToList();
         }
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Linq;
 
 namespace GamerShopStore.Pages
 {
@@ -21,25 +22,51 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class StockTovar : Page
     {
-        //public static Tovar_stock tovar_stocks;
-
-        public int ZakazTovar { get; set; }
         public StockTovar()
         {
             InitializeComponent();
-            StockTovarList.ItemsSource = App.BD.Tovar.ToList();
+            StockTovarList1.ItemsSource = App.BD.Tovar_Sup.ToList();
+            var typee = App.BD.Type_Tovar.ToList();
+            typee.Insert(0, new BDSHKA.Type_Tovar() { ID_type = 0, Name_type = "Все" });
+            TypeCB.ItemsSource = typee.ToList();
+            TypeCB.DisplayMemberPath = "Name_type";
+
         }
 
-        private void Button_Click_back(object sender, RoutedEventArgs e)
+        private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AdminOkno());
         }
 
-        private void StockTovarList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var SelectTovar = (Tovar)StockTovarList.SelectedItem;
-            SpecificTovarStock EditPage = new SpecificTovarStock(SelectTovar);
-            NavigationService.Navigate(EditPage);
+            //var type = TypeCB.SelectedItem as Type_Tovar;
+            //StockTovarList.ItemsSource = App.BD.Tovar.Where(i => i.ID_type == type.ID_type).ToList();
+            //SearchTB.Text = null;
+            var typee = TypeCB.SelectedItem as Type_Tovar;
+            if (typee.ID_type == 0)
+            {
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
+                TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
+            }
+
+            else
+            {
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee.ID_type));
+                TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee.ID_type).ToList();
+            }
+        }
+
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var SelectTovar = (Tovar_Sup)StockTovarList1.SelectedItem;
+            TovarProverka editPage = new TovarProverka(SelectTovar);
+            NavigationService.Navigate(editPage);
         }
     }
 }

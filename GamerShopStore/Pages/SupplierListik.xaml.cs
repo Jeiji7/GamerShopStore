@@ -37,14 +37,13 @@ namespace GamerShopStore.Pages
         {
             if (SupplierList.SelectedIndex != -1)
             {
-                supplier = (Supplier)SupplierList.SelectedItem;
                 var SelectTovar = (Supplier)SupplierList.SelectedItem;
                 TovarSupplier editPage = new TovarSupplier(SelectTovar);
                 NavigationService.Navigate(editPage);
             }
             else
             {
-                MessageBox.Show("Вы не выбрали сотрудника для изменения");
+                MessageBox.Show("Вы не выбрали поставщика для изменения");
             }
         }
 
