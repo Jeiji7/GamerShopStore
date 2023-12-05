@@ -25,6 +25,7 @@ namespace GamerShopStore.Pages
         public TovarProverka(Tovar_Sup SelectTovar)
         {
             InitializeComponent();
+            DataContext = SelectTovar;
             //tovar = SelectTovar;
             //NamesTB.Text = tovar.NameTovar;
             //PriceTB.Text = Convert.ToString(tovar.Price);

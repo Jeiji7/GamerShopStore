@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,13 +23,14 @@ namespace GamerShopStore.Pages
     public partial class TovarSupplier : Page
     {
         public Supplier supplier;
+        public int count { get; set; }
+        public byte[] Imagenaric { get; set; }
 
         public TovarSupplier(Supplier SelectTovar)
         {
             InitializeComponent();
             supplier = SelectTovar;
             DataContext = SelectTovar;
-            //ID_supTB.Text = SelectTovar.ID_sup.ToString();
             
             NamesCB.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_sup == SelectTovar.ID_sup).ToList();
             NamesCB.DisplayMemberPath = "NameTovar";
@@ -37,14 +39,44 @@ namespace GamerShopStore.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Supplier());
+            NavigationService.Navigate(new SupplierListik());
         }
 
         private void NamesCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var name = NamesCB.SelectedItem as Tovar_Sup;
-            //var ID = ID_supTB.Text;
-            //NamesCB.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_sup == name.ID_sup).ToList();
+            Tovar_Sup tovar = NamesCB.SelectedItem as Tovar_Sup;
+            PriceTB.Text = Convert.ToString(tovar.Price);
+            CountsTB.Text = Convert.ToString(tovar.CountsSup);
+            CountsStock1TB.Text = Convert.ToString(tovar.CountsTovar);
+
+            Imagenaric = tovar.ImageTovar;
+
+            MemoryStream byteStream = new MemoryStream(tovar.ImageTovar);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = byteStream;
+            image.EndInit();
+            MainImage.Source = image;
+
+            TypeTB.Text = Convert.ToString(tovar.ID_type);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            //tovar = (Tovar_Sup)NamesCB.SelectedItem;
+            Tovar_Sup tovar = new Tovar_Sup();
+            count = Convert.ToInt32(CountsStockTB.Text);
+            if (count != 0)
+            {
+                tovar.CountsSup = Convert.ToInt32(CountsTB.Text) - count;
+                tovar.CountsTovar = CountsStock1TB.Text + count;
+                tovar.VisibleSup = true;
+                App.BD.SaveChanges();
+                MessageBox.Show("Товар успешно заказан");
+                NavigationService.Navigate(new SupplierListik());
+            }
+            else
+                MessageBox.Show("Произошла ошибка выбeрите количество товара");
         }
     }
 }

@@ -23,8 +23,8 @@
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
         </Grid.Background>
         <TextBlock TextWrapping="Wrap" Grid.RowSpan="2" VerticalAlignment="Center" Style="{DynamicResource paragraph}" Margin="10">Товары на складе</TextBlock>
-        <Button  Grid.RowSpan="2" VerticalAlignment="top"  Margin="10" Click="Button_Click">Товары на складе</Button>
-        <ListView x:Name="StockTovarList1" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}">
+        
+        <ListView x:Name="StockTovarList1" Grid.Column="1" Grid.RowSpan="2" Style="{DynamicResource Listik}" SelectionChanged="StockTovarList1_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -45,7 +45,7 @@
                         <GridViewColumn Header="Кол-во" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding Path=Counts}" Style="{StaticResource TextListview}"></TextBlock>
+                                    <TextBlock  Text="{Binding Path=CountsTovar}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

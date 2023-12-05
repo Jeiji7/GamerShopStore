@@ -26,15 +26,15 @@
                 <StackPanel  HorizontalAlignment="Left">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Название</TextBlock>
-                        <ComboBox x:Name="NamesCB" Width="160" Height="40" FontFamily="Inpact" DisplayMemberPath="NameTovar" SelectionChanged="NamesCB_SelectionChanged"></ComboBox>
+                        <ComboBox FontSize="20" x:Name="NamesCB" Width="160" Height="40" FontFamily="Inpact" DisplayMemberPath="NameTovar" SelectionChanged="NamesCB_SelectionChanged"></ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Стоимость</TextBlock>
-                        <TextBox x:Name="PriceTb"></TextBox>
+                        <TextBox x:Name="PriceTB" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Кол-во</TextBlock>
-                        <TextBox x:Name="SalaryTB"></TextBox>
+                        <TextBox x:Name="CountsTB" ></TextBox>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Left">
@@ -44,19 +44,23 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Категория</TextBlock>
-                        <TextBox x:Name="TypeTB"></TextBox>
+                        <TextBox x:Name="TypeTB" Text="{Binding Path=Tovar_Sup.Type_Tovar.Name_type}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{DynamicResource paragraph}">На складе</TextBlock>
+                        <TextBox x:Name="CountsStock1TB"></TextBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
         <Image Grid.Row="0" Grid.Column="1" x:Name="MainImage" Width="300" Height="300" />
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
-            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Margin="5 5" VerticalAlignment="Top">
+            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Margin="5 0" VerticalAlignment="Top">
                 <TextBlock Style="{DynamicResource paragraph}" FontSize="18">Кол-во товаров для покупки:</TextBlock>
                 <TextBox x:Name="CountsStockTB"></TextBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5">
-                <Button Style="{StaticResource CommonButton}">
+                <Button Style="{StaticResource CommonButton}" Click="Button_Click_1">
                     <TextBlock Style="{DynamicResource TextListview}">
                         Заказать
                     </TextBlock>

@@ -22,6 +22,7 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class StockTovar : Page
     {
+        public int value { get; set; }
         public StockTovar()
         {
             InitializeComponent();
@@ -43,17 +44,19 @@ namespace GamerShopStore.Pages
             //var type = TypeCB.SelectedItem as Type_Tovar;
             //StockTovarList.ItemsSource = App.BD.Tovar.Where(i => i.ID_type == type.ID_type).ToList();
             //SearchTB.Text = null;
+            Tovar_Sup tovar = new Tovar_Sup();
             var typee = TypeCB.SelectedItem as Type_Tovar;
-            if (typee.ID_type == 0)
+            tovar.ID_type = typee.ID_type;
+            if (tovar.ID_type != 0)
             {
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
-                TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee.ID_type));
+                TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee.ID_type).ToList();
             }
 
             else
             {
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee.ID_type));
-                TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee.ID_type).ToList();
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
+                TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
             }
         }
 
@@ -62,7 +65,8 @@ namespace GamerShopStore.Pages
             StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void StockTovarList1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var SelectTovar = (Tovar_Sup)StockTovarList1.SelectedItem;
             TovarProverka editPage = new TovarProverka(SelectTovar);
