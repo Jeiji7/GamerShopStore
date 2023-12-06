@@ -275,7 +275,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GameStoreEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="GameStoreEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Income" EntityType="Self.Income" />
           <EntitySet Name="PostEmp" EntityType="Self.PostEmp" />
@@ -305,7 +305,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище GameStoreModelContainer" CdmEntityContainer="GameStoreEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище GameStoreModelContainer" CdmEntityContainer="GameStoreEntities1">
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="GameStoreModel.Employee">
               <MappingFragment StoreEntitySet="Employee">

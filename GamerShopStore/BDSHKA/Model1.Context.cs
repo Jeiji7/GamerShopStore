@@ -13,10 +13,10 @@ namespace GamerShopStore.BDSHKA
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class GameStoreEntities : DbContext
+    public partial class GameStoreEntities1 : DbContext
     {
-        public GameStoreEntities()
-            : base("name=GameStoreEntities")
+        public GameStoreEntities1()
+            : base("name=GameStoreEntities1")
         {
         }
     
