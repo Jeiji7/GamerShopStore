@@ -103,6 +103,9 @@
     <Compile Include="BDSHKA\Supplier.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BDSHKA\sysdiagrams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="BDSHKA\Tovar_Sup.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
