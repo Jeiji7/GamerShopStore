@@ -24,12 +24,21 @@ namespace GamerShopStore.Pages
         public StoreTovar()
         {
             InitializeComponent();
-            StoreTovarList.ItemsSource = App.BD.Tovar_Sup.Where(i => i.VisibleTovar == true).ToList();
+            StoreTovarList.ItemsSource = App.BD.Tovar_Sup.Where(i => i.VisibleTovar == true && i.VisibleSup == true).ToList();
+            var typee = App.BD.Type_Tovar.ToList();
+            typee.Insert(0, new BDSHKA.Type_Tovar() { ID_type = 0, Name_type = "Все" });
+            TypeCB.ItemsSource = typee.ToList();
+            TypeCB.DisplayMemberPath = "Name_type";
+            TypeCB.SelectedIndex = 0;
+
+
         }
 
         private void StockTovarList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var StoreTovar1 = (Tovar_Sup)StoreTovarList.SelectedItem;
+            Discription editPage = new Discription(StoreTovar1);
+            NavigationService.Navigate(editPage);
         }
         private void Sorti()
         {
@@ -45,7 +54,7 @@ namespace GamerShopStore.Pages
             Sorti();
         }
 
-        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchTB_TextChanged_1(object sender, TextChangedEventArgs e)
         {
             var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
             if (type == 0)
@@ -56,7 +65,6 @@ namespace GamerShopStore.Pages
             {
                 Sorti();
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -84,5 +92,7 @@ namespace GamerShopStore.Pages
         {
 
         }
+
+       
     }
 }

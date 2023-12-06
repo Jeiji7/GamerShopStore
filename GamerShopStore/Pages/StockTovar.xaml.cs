@@ -23,6 +23,7 @@ namespace GamerShopStore.Pages
     public partial class StockTovar : Page
     {
         //public int value { get; set; }
+        public Tovar_Sup tovar;
         public StockTovar()
         {
             InitializeComponent();
@@ -32,9 +33,10 @@ namespace GamerShopStore.Pages
             TypeCB.ItemsSource = typee.ToList();
             TypeCB.DisplayMemberPath = "Name_type";
             TypeCB.SelectedIndex = 0;
-            
 
             
+
+           
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
@@ -74,8 +76,8 @@ namespace GamerShopStore.Pages
 
         private void StockTovarList1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var SelectTovar = (Tovar_Sup)StockTovarList1.SelectedItem;
-            TovarProverka editPage = new TovarProverka(SelectTovar);
+            var SelectTovar2 = (Tovar_Sup)StockTovarList1.SelectedItem;
+            TovarProverka editPage = new TovarProverka(SelectTovar2);
             NavigationService.Navigate(editPage);
         }
     }

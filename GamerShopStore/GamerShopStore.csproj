@@ -132,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Discription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Employees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,10 +157,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SupplierListik.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\TovarDiscription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +182,9 @@
     <Compile Include="Pages\Consultant.xaml.cs">
       <DependentUpon>Consultant.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Discription.xaml.cs">
+      <DependentUpon>Discription.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
     </Compile>
@@ -199,9 +202,6 @@
     </Compile>
     <Compile Include="Pages\SupplierListik.xaml.cs">
       <DependentUpon>SupplierListik.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TovarDiscription.xaml.cs">
-      <DependentUpon>TovarDiscription.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TovarProverka.xaml.cs">
       <DependentUpon>TovarProverka.xaml</DependentUpon>

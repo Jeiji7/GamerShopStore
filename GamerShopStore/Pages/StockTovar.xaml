@@ -59,7 +59,7 @@
                         <GridViewColumn Header="Наличие" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox x:Name="ChefCheck"/>
+                                    <CheckBox IsChecked="{Binding Path=VisibleTovar}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

@@ -21,19 +21,17 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class TovarProverka : Page
     {
-        Employee employee = new Employee();
-        public TovarProverka(Tovar_Sup SelectTovar)
+        public Tovar_Sup tovar_Sup;
+        Tovar_Sup tovar = new Tovar_Sup();
+
+        public TovarProverka(Tovar_Sup SelectTovar2)
         {
             InitializeComponent();
-            DataContext = SelectTovar;
-            //tovar = SelectTovar;
-            //NamesTB.Text = tovar.NameTovar;
-            //PriceTB.Text = Convert.ToString(tovar.Price);
-            //CountTB.Text = Convert.ToString(tovar.Counts);
-            //NameSupTB.Text = Convert.ToString(App.BD.Supplier.Where(i => i.ID_sup == SelectTovar.ID_sup).ToString());
-            //VisibleTB.Text = Convert.ToString(tovar.VisibleTov);
+            tovar_Sup = SelectTovar2;
+            DataContext = SelectTovar2;
+            
 
-            if (SelectTovar.VisibleTovar == true)
+            if (tovar.VisibleTovar == true)
             {
                 ChefCheck.IsChecked = true;
             }
@@ -41,8 +39,10 @@ namespace GamerShopStore.Pages
             {
                 ChefCheck.IsChecked = false;
             }
+
         }
 
+       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +51,21 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+               tovar = new Tovar_Sup();
+            if (ChefCheck.IsChecked == true)
+            {
+                tovar.VisibleTovar = Convert.ToBoolean(ChefCheck);
+                App.BD.SaveChanges();
+                MessageBox.Show("Товар успешно добавлен в каталог!!");
+                NavigationService.Navigate(new StockTovar());
+            }
+            else
+            {
+                tovar.VisibleTovar = Convert.ToBoolean(ChefCheck);
+                App.BD.SaveChanges();
+                NavigationService.Navigate(new StockTovar());
+                MessageBox.Show("Товар был убран или не добавлен в каталога");
+            }
         }
     }
 }
