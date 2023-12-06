@@ -21,7 +21,7 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class TovarProverka : Page
     {
-
+        Employee employee = new Employee();
         public TovarProverka(Tovar_Sup SelectTovar)
         {
             InitializeComponent();
@@ -32,12 +32,26 @@ namespace GamerShopStore.Pages
             //CountTB.Text = Convert.ToString(tovar.Counts);
             //NameSupTB.Text = Convert.ToString(App.BD.Supplier.Where(i => i.ID_sup == SelectTovar.ID_sup).ToString());
             //VisibleTB.Text = Convert.ToString(tovar.VisibleTov);
+
+            if (SelectTovar.VisibleTovar == true)
+            {
+                ChefCheck.IsChecked = true;
+            }
+            else
+            {
+                ChefCheck.IsChecked = false;
+            }
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new StockTovar());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

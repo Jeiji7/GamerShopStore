@@ -22,16 +22,19 @@ namespace GamerShopStore.Pages
     /// </summary>
     public partial class StockTovar : Page
     {
-        public int value { get; set; }
+        //public int value { get; set; }
         public StockTovar()
         {
             InitializeComponent();
-            StockTovarList1.ItemsSource = App.BD.Tovar_Sup.ToList();
+            StockTovarList1.ItemsSource = App.BD.Tovar_Sup.Where(i => i.VisibleSup == true).ToList();
             var typee = App.BD.Type_Tovar.ToList();
             typee.Insert(0, new BDSHKA.Type_Tovar() { ID_type = 0, Name_type = "Все" });
             TypeCB.ItemsSource = typee.ToList();
             TypeCB.DisplayMemberPath = "Name_type";
             TypeCB.SelectedIndex = 0;
+            
+
+            
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
@@ -51,22 +54,7 @@ namespace GamerShopStore.Pages
 
         private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //Tovar_Sup tovar = new Tovar_Sup();
             Sorti();
-            //SearchTB.Text = null;
-            //var typee = (TypeCB.SelectedItem as Type_Tovar).ID_type;
-            ////tovar.ID_type = typee.ID_type;
-            //if (typee != 0)
-            //{
-            //    StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee));
-            //    TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee).ToList();
-            //}
-
-            //else
-            //{
-            //    StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
-            //    TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
-            //}
         }
 
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)

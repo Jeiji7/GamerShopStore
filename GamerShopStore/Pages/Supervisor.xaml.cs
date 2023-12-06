@@ -62,5 +62,10 @@ namespace GamerShopStore.Pages
         {
             NavigationService.Navigate(new SupplierListik());
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new StoreTovar());
+        }
     }
 }
