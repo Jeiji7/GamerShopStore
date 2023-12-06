@@ -47,14 +47,6 @@ namespace GamerShopStore.Pages
             this.currectUserr = imagePhoto;
         }
 
-        public Supervisor()
-        {
-            InitializeComponent();
-            NamessTB.Text = "Егор";
-           //ФОТКИ И НИКА НЕТ
-
-        }
-
         private void Button_Click_Employees(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Employees());

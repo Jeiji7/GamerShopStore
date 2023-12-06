@@ -44,7 +44,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Категория</TextBlock>
-                        <TextBox x:Name="TypeTB" Text="{Binding Path=Tovar_Sup.Type_Tovar.Name_type}"></TextBox>
+                        <TextBox x:Name="TypeTB" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">На складе</TextBlock>
@@ -57,7 +57,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
             <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" Margin="5 0" VerticalAlignment="Top">
                 <TextBlock Style="{DynamicResource paragraph}" FontSize="18">Кол-во товаров для покупки:</TextBlock>
-                <TextBox x:Name="CountsStockTB"></TextBox>
+                <TextBox x:Name="CountsStockTB">0</TextBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="5">
                 <Button Style="{StaticResource CommonButton}" Click="Button_Click_1">

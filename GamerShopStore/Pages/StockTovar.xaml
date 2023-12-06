@@ -16,8 +16,8 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260*"/>
-            <ColumnDefinition Width="540*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="600*"/>
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush ImageSource="/ImageResource/supervisor6.png"/>
@@ -28,31 +28,38 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Название" Width="150">
+                        <GridViewColumn Header="Название" Width="145">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock TextWrapping="Wrap" Text="{Binding Path=NameTovar}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Цена" Width="100">
+                        <GridViewColumn Header="Цена" Width="95">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding Path=Price}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Кол-во" Width="100">
+                        <GridViewColumn Header="Кол-во" Width="95">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding Path=CountsTovar}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Категория" Width="150">
+                        <GridViewColumn Header="Категория" Width="148">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=Type_Tovar.Name_type}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Наличие" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -69,7 +76,7 @@
                     
         <StackPanel Orientation="Vertical" Margin="10 0">
                 <TextBlock FontSize="20" Style="{DynamicResource paragraph}">По категории:</TextBlock>
-            <ComboBox x:Name="TypeCB" Width="200" Height="35" DisplayMemberPath="Name_type" SelectionChanged="TypeCB_SelectionChanged"></ComboBox>
+            <ComboBox FontFamily="Impact" FontSize="20" x:Name="TypeCB" Width="200" Height="35" DisplayMemberPath="Name_type" SelectionChanged="TypeCB_SelectionChanged"></ComboBox>
         </StackPanel>
         </StackPanel>
 

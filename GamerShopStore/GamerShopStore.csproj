@@ -269,6 +269,7 @@
   <ItemGroup>
     <Resource Include="ImageResource\supervis22.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="BDSHKA\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

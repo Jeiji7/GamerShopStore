@@ -49,7 +49,7 @@ namespace GamerShopStore.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Supervisor());
+            NavigationService.Navigate(new Supervisor(App.employee));
         }
     }
 }

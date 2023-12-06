@@ -17,7 +17,7 @@ namespace GamerShopStore.BDSHKA
         public int ID_tovarSup { get; set; }
         public string NameTovar { get; set; }
         public Nullable<decimal> Price { get; set; }
-        public string CountsTovar { get; set; }
+        public Nullable<int> CountsTovar { get; set; }
         public Nullable<int> CountsSup { get; set; }
         public Nullable<int> ID_type { get; set; }
         public Nullable<int> ID_sup { get; set; }

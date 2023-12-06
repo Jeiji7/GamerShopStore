@@ -80,7 +80,7 @@ namespace GamerShopStore.Pages
             //Employee empl = currectUserr;
             //Supervisor editPage = new Supervisor(currectUserr);
             //NavigationService.Navigate(editPage);
-            NavigationService.Navigate(new Supervisor());
+            NavigationService.Navigate(new Supervisor(App.employee));
         }
     }
 }

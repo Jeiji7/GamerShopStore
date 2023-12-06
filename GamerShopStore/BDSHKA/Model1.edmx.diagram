@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7198397523484964aaa54e284669b5dd" Name="Diagram1">
+      <Diagram DiagramId="615148ae42b84ea99eafa5826dea1a1c" Name="Diagram1">
         <EntityTypeShape EntityType="GameStoreModel.Employee" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.Income" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.PostEmp" Width="1.5" PointX="2.75" PointY="6.625" IsExpanded="true" />

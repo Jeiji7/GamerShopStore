@@ -153,6 +153,10 @@
             <Setter Property="Background" Value="Khaki"/>
         </Style>
 
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Control.VerticalAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
   
 </Application>

@@ -33,24 +33,24 @@ namespace GamerShopStore.Pages
             string _login = LoginTB.Text.Trim();
             string _password = PasswordPS.Password.Trim();
             employee = new List<Employee>(App.BD.Employee.ToList());
-            Employee currectUser = employee.FirstOrDefault(x => x.Login == _login && x.Password == _password);
-            empl = currectUser;
-            if (currectUser != null)
+            App.employee = employee.FirstOrDefault(x => x.Login == _login && x.Password == _password);
+            empl = App.employee;
+            if (App.employee != null)
             {
                 MessageBox.Show($"Добро пожаловать {empl.Name} !!!");
                 if (empl.ID_post == 1)
                 {
-                    Supervisor editPage = new Supervisor(currectUser);
+                    Supervisor editPage = new Supervisor(App.employee);
                     NavigationService.Navigate(editPage);
                 }
                 else if (empl.ID_post == 2)
                 {
-                    AdminOkno editPage = new AdminOkno(currectUser);
+                    AdminOkno editPage = new AdminOkno(App.employee);
                     NavigationService.Navigate(editPage);
                 }
                 else if (empl.ID_post == 3)
                 {
-                    Consultant editPage = new Consultant(currectUser);
+                    Consultant editPage = new Consultant(App.employee);
                     NavigationService.Navigate(editPage);
                 }
 

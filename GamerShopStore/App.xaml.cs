@@ -15,5 +15,6 @@ namespace GamerShopStore
     public partial class App : Application
     {
         public static GameStoreEntities BD = new GameStoreEntities();
+        public static Employee employee; 
     }
 }

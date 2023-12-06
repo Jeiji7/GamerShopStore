@@ -60,7 +60,7 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Store(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new StoreTovar());
         }
     }
 }

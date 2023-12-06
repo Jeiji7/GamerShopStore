@@ -31,7 +31,7 @@ namespace GamerShopStore.Pages
             typee.Insert(0, new BDSHKA.Type_Tovar() { ID_type = 0, Name_type = "Все" });
             TypeCB.ItemsSource = typee.ToList();
             TypeCB.DisplayMemberPath = "Name_type";
-
+            TypeCB.SelectedIndex = 0;
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
@@ -39,30 +39,48 @@ namespace GamerShopStore.Pages
             NavigationService.Navigate(new AdminOkno());
         }
 
+        private void Sorti()
+        {
+
+            var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
+            if (type == 0)
+                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.ToList();
+            else
+                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_type == type).ToList();
+        }
+
         private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //var type = TypeCB.SelectedItem as Type_Tovar;
-            //StockTovarList.ItemsSource = App.BD.Tovar.Where(i => i.ID_type == type.ID_type).ToList();
+            //Tovar_Sup tovar = new Tovar_Sup();
+            Sorti();
             //SearchTB.Text = null;
-            Tovar_Sup tovar = new Tovar_Sup();
-            var typee = TypeCB.SelectedItem as Type_Tovar;
-            tovar.ID_type = typee.ID_type;
-            if (tovar.ID_type != 0)
-            {
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee.ID_type));
-                TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee.ID_type).ToList();
-            }
+            //var typee = (TypeCB.SelectedItem as Type_Tovar).ID_type;
+            ////tovar.ID_type = typee.ID_type;
+            //if (typee != 0)
+            //{
+            //    StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.ID_type == typee));
+            //    TypeCB.ItemsSource = App.BD.Tovar_Sup.Where(j => j.ID_type == typee).ToList();
+            //}
 
-            else
-            {
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
-                TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
-            }
+            //else
+            //{
+            //    StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup);
+            //    TypeCB.ItemsSource = App.BD.Tovar_Sup.ToList();
+            //}
         }
 
         private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-            StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
+            var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
+            if (type == 0)
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
+            else
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.ID_type == type));
+            if (SearchTB.Text == "" || SearchTB.Text == null)
+            {
+                Sorti();
+            }
+
         }
 
 
