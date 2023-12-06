@@ -33,7 +33,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <TextBlock Style="{DynamicResource paragraph}">Описание</TextBlock>
-                        <TextBox TextWrapping="Wrap" Width="240" Height="135" FontSize="18" x:Name="DiscriptionTB">
+                        <TextBox TextWrapping="Wrap" Width="240" Height="135" FontSize="18" x:Name="DiscriptionTB" Text="{Binding Path=Discription}">
                         </TextBox>
                     </StackPanel>
                 </StackPanel>

@@ -22,7 +22,7 @@ namespace GamerShopStore.Pages
     public partial class TovarProverka : Page
     {
         public Tovar_Sup tovar_Sup;
-        Tovar_Sup tovar = new Tovar_Sup();
+        //Tovar_Sup tovar = new Tovar_Sup();
 
         public TovarProverka(Tovar_Sup SelectTovar2)
         {
@@ -31,7 +31,7 @@ namespace GamerShopStore.Pages
             DataContext = SelectTovar2;
             
 
-            if (tovar.VisibleTovar == true)
+            if (tovar_Sup.VisibleTovar == true)
             {
                 ChefCheck.IsChecked = true;
             }
@@ -51,17 +51,18 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-               tovar = new Tovar_Sup();
+               //tovar = new Tovar_Sup();
             if (ChefCheck.IsChecked == true)
             {
-                tovar.VisibleTovar = Convert.ToBoolean(ChefCheck);
+                tovar_Sup.VisibleTovar = true;
+                tovar_Sup.Discription = DiscriptionTB.Text;
                 App.BD.SaveChanges();
                 MessageBox.Show("Товар успешно добавлен в каталог!!");
                 NavigationService.Navigate(new StockTovar());
             }
             else
             {
-                tovar.VisibleTovar = Convert.ToBoolean(ChefCheck);
+                tovar_Sup.VisibleTovar = false;
                 App.BD.SaveChanges();
                 NavigationService.Navigate(new StockTovar());
                 MessageBox.Show("Товар был убран или не добавлен в каталога");

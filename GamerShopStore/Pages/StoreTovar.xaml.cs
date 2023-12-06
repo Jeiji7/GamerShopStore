@@ -45,9 +45,9 @@ namespace GamerShopStore.Pages
 
             var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
             if (type == 0)
-                StoreTovarList.ItemsSource = App.BD.Tovar_Sup.ToList();
+                StoreTovarList.ItemsSource = App.BD.Tovar_Sup.Where(i => i.VisibleTovar == true && i.VisibleSup == true).ToList();
             else
-                StoreTovarList.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_type == type).ToList();
+                StoreTovarList.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_type == type && i.VisibleTovar == true && i.VisibleSup == true).ToList();
         }
         private void TypeCB_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -58,9 +58,9 @@ namespace GamerShopStore.Pages
         {
             var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
             if (type == 0)
-                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
+                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.VisibleTovar == true && i.VisibleSup == true));
             else
-                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.ID_type == type));
+                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.ID_type == type && i.VisibleTovar == true && i.VisibleSup == true));
             if (SearchTB.Text == "" || SearchTB.Text == null)
             {
                 Sorti();
@@ -80,19 +80,27 @@ namespace GamerShopStore.Pages
 
         private void MaxTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            //Sum();
+            var max = Convert.ToInt32(MaxTB.Text);
+            if (MinTB.Text == "" || MinTB.Text == null)
+                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.Price.Value <= max && i.VisibleTovar == true && i.VisibleSup == true));
         }
 
         private void MinTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            //Sum();
+            var min = Convert.ToInt32(MinTB.Text);
+            if (MaxTB.Text == "" || MaxTB.Text == null)
+                StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.Price.Value >= min && i.VisibleTovar == true && i.VisibleSup == true));
         }
 
-        private void Sum()
-        {
-
-        }
-
-       
+        //public void Sum()
+        //{
+        //    var max = Convert.ToInt32(MaxTB.Text);
+        //    var min = Convert.ToInt32(MinTB.Text);
+        //    if (MaxTB.Text == "" || MaxTB.Text == null || MinTB.Text == null || MinTB.Text == "")
+        //        StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.Price.Value <= max &&  i.Price.Value >= min && i.VisibleTovar == true && i.VisibleSup == true));
+        //        //StoreTovarList.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.Price.Value >= min && i.VisibleTovar == true && i.VisibleSup == true));
+        //}
     }
 }

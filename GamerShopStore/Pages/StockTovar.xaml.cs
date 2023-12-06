@@ -49,9 +49,9 @@ namespace GamerShopStore.Pages
 
             var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
             if (type == 0)
-                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.ToList();
+                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.Where(i => i.VisibleSup == true).ToList();
             else
-                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_type == type).ToList();
+                StockTovarList1.ItemsSource = App.BD.Tovar_Sup.Where(i => i.ID_type == type && i.VisibleSup == true).ToList();
         }
 
         private void TypeCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,9 +63,9 @@ namespace GamerShopStore.Pages
         {
             var type = (TypeCB.SelectedItem as Type_Tovar).ID_type;
             if (type == 0)
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text)));
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.VisibleSup == true));
             else
-                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.ID_type == type));
+                StockTovarList1.ItemsSource = new List<Tovar_Sup>(App.BD.Tovar_Sup.Where(i => i.NameTovar.StartsWith(SearchTB.Text) && i.ID_type == type && i.VisibleSup == true));
             if (SearchTB.Text == "" || SearchTB.Text == null)
             {
                 Sorti();

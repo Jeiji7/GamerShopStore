@@ -37,7 +37,7 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" Margin="5">
                         <TextBlock Style="{DynamicResource paragraph}" FontSize="18" >Мин</TextBlock>
-                        <TextBox  Width="100" Height="35" x:Name="MinTB" TextChanged="MinTB_TextChanged" >0</TextBox>
+                        <TextBox  Width="100" Height="35" x:Name="MinTB" TextChanged="MinTB_TextChanged" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="5">
                         <TextBlock Style="{DynamicResource paragraph}" FontSize="18" >Макс</TextBlock>
@@ -63,7 +63,7 @@
                         <GridViewColumn Header="Цена" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding Path=Price}" Style="{StaticResource TextListview}"></TextBlock>
+                                    <TextBlock   Text="{Binding Path=Price}" Style="{StaticResource TextListview}"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
