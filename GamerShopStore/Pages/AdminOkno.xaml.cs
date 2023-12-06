@@ -61,7 +61,7 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Store(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new());
+            NavigationService.Navigate(new StoreTovar());
         }
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
