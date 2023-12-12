@@ -41,7 +41,7 @@ namespace GamerShopStore.Pages
 
         private void Button_Click_Back(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AdminOkno());
+            NavigationService.Navigate(new AdminOkno(App.employee));
         }
 
         private void Sorti()

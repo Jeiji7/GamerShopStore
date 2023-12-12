@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="615148ae42b84ea99eafa5826dea1a1c" Name="Diagram1">
+      <Diagram DiagramId="3c857eb00b4e4f3e93256a0715db01da" Name="Diagram1">
         <EntityTypeShape EntityType="GameStoreModel.Employee" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.Income" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.PostEmp" Width="1.5" PointX="2.75" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.Quarter" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GameStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Supplier" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GameStoreModel.Tovar_Sup" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="GameStoreModel.Type_Tovar" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GameStoreModel.Type_Tovar" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <AssociationConnector Association="GameStoreModel.FK_Employee_PostEmp" ManuallyRouted="false" />
         <AssociationConnector Association="GameStoreModel.FK_Income_Quarter" ManuallyRouted="false" />
         <AssociationConnector Association="GameStoreModel.FK_Tovar_Sup_Supplier" ManuallyRouted="false" />
